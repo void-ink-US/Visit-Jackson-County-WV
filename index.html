@@ -409,6 +409,13 @@ a{text-decoration:none;color:inherit}
   .pricing-grid{grid-template-columns:1fr}
   .partners-section{padding:4rem 1.25rem}
   .catref-upgrade{flex-direction:column;align-items:flex-start}
+  /* Free directory: stack each row so business names aren't truncated on narrow screens */
+  .directory-item{flex-direction:column;align-items:flex-start;gap:.2rem}
+  .directory-item-left{flex-wrap:wrap;gap:.1rem .6rem}
+  .directory-item-name{white-space:normal;overflow:visible;text-overflow:clip}
+  /* Dining/shopping reference rows: let long names wrap instead of clipping */
+  .catref-item-left{flex-wrap:wrap;gap:.1rem .75rem;min-width:0}
+  .catref-item-name{white-space:normal;overflow:visible;text-overflow:clip}
 }
 </style>
 </head>
@@ -1054,7 +1061,6 @@ a{text-decoration:none;color:inherit}
         <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">The Dawg Pound</span><span class="directory-item-cat">Ravenswood — American</span></div></div>
         <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Inaka Hibachi &amp; Sushi</span><span class="directory-item-cat">Ravenswood — Japanese</span></div></div>
         <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Mountain Momma Marketplace</span><span class="directory-item-cat">Ravenswood — Boutique &amp; Gifts</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Sand Creek Marina</span><span class="directory-item-cat">Ravenswood — Marina &amp; Camping</span></div></div>
         <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Downtown Ravenswood Partners</span><span class="directory-item-cat">Visitor Information</span></div><a href="https://www.downtownravenswood.org" class="directory-item-link" target="_blank">downtownravenswood.org ↗</a></div>
       </div>
       <div class="directory-submit-row">
