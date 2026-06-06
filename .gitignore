@@ -1,0 +1,11 @@
+# Publish the website only — ignore everything by default,
+# then explicitly allow the public site files.
+/*
+
+!index.html
+!README.md
+!.gitignore
+
+# Never publish internal/business material or editor folders
+.claude/
+CLAUDE.md

@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover Jackson County WV — an independent guide to Ripley and Ravenswood, West Virginia. Events, attractions, lodging, and local businesses.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0F1A12">
+<link rel="canonical" href="https://discoverjacksoncountywv.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230F1A12'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-style='italic' font-size='20' fill='%23D4A44E' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+<!-- Open Graph -->
+<meta property="og:title" content="Discover Jackson County WV — Almost Heaven, West Virginia">
+<meta property="og:description" content="Two river towns. America's largest small-town Independence Day. Cedar Lakes. Ohio River sunsets. This is Jackson County, West Virginia.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://discoverjacksoncountywv.com/">
+<meta property="og:site_name" content="Discover Jackson County WV">
+<meta property="og:locale" content="en_US">
+<!-- TODO before launch: create and host social-card.jpg (1200×630) -->
+<meta property="og:image" content="https://discoverjacksoncountywv.com/social-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jackson County, West Virginia — Ripley and Ravenswood">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Discover Jackson County WV — Almost Heaven, West Virginia">
+<meta name="twitter:description" content="Two river towns. America's largest small-town Independence Day. Cedar Lakes. Ohio River sunsets. This is Jackson County, West Virginia.">
+<meta name="twitter:image" content="https://discoverjacksoncountywv.com/social-card.jpg">
+<title>Discover Jackson County WV — Almost Heaven, West Virginia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="dns-prefetch" href="https://a.basemaps.cartocdn.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{
+  --cream:#F4F0E8;--cream-d:#EAE4D6;--cream-dd:#DDD6C4;
+  --forest:#1B2E1F;--forest-d:#0F1A12;--forest-m:#2A4230;
+  --gold:#C4882A;--gold-l:#D4A44E;--gold-d:#A87020;
+  --river:#2B4B6E;--river-l:#3A6090;
+  --char:#1C1C18;--text:#2A2A22;--text-m:#5A5A4E;--text-l:#8A8A7A;
+  --white:#FFFFFF;
+  --ff-d:'Fraunces',Georgia,serif;
+  --ff-b:'Outfit',system-ui,sans-serif;
+  --max:1200px;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-b);background:var(--cream);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* ── PHOTO BACKGROUNDS ─────────────────────────── */
+.bg-cedar{background:linear-gradient(155deg,#040d06 0%,#0d2010 12%,#162a18 25%,#1f3520 38%,#2a4a2a 50%,#3a6035 60%,#4f7540 68%,#7a9855 75%,rgba(196,160,64,.35) 82%,#7a6030 89%,#2a1508 96%,#0d0a04 100%)}
+.bg-july4{background:radial-gradient(ellipse 120% 80% at 50% 30%,rgba(196,136,42,.32) 0%,rgba(180,60,20,.22) 22%,transparent 55%),radial-gradient(ellipse 60% 40% at 78% 18%,rgba(200,80,40,.28) 0%,transparent 48%),linear-gradient(170deg,#0a0510 0%,#150820 25%,#1a0d15 50%,#0f0a18 75%,#050308 100%)}
+.bg-river{background:linear-gradient(180deg,#080d18 0%,#121e35 12%,#1e3558 26%,#2b4b6e 40%,#3a5f80 52%,#7a9aaa 62%,rgba(192,184,136,.65) 70%,#8a7030 78%,#3a2510 88%,#150f05 96%,#080504 100%)}
+.bg-trails{background:linear-gradient(140deg,#050808 0%,#0d1810 12%,#162820 25%,#1e3828 38%,#284a30 50%,#3a6038 60%,#557845 68%,#7a9858 74%,rgba(168,184,96,.5) 80%,#8a7030 88%,#3a2010 95%,#100805 100%)}
+.bg-ravenswood{background:linear-gradient(160deg,#08101a 0%,#101e30 18%,#1a2e48 32%,#243d5e 46%,#2b5078 58%,#456a82 66%,#708898 73%,rgba(176,168,120,.55) 80%,#786035 88%,#2a1c08 95%,#0d0a04 100%)}
+.bg-harvest{background:radial-gradient(ellipse 100% 80% at 50% 60%,rgba(196,136,42,.28) 0%,rgba(140,80,20,.2) 30%,transparent 60%),linear-gradient(155deg,#0d0a04 0%,#1a1208 15%,#2a1e0c 28%,#3a2c14 40%,#4a3a1e 52%,#6a5430 62%,#8a7848 70%,rgba(196,160,64,.45) 78%,#7a4820 86%,#2a1008 94%,#0a0504 100%)}
+.bg-gold-dark{background:linear-gradient(145deg,#3a1a04 0%,#6a3010 25%,#a07025 50%,#c4882a 70%,#7a5010 88%,#2a1004 100%)}
+
+/* ── GRAIN ─────────────────────────────────────── */
+.grain{position:relative}
+.grain::after{content:'';position:absolute;inset:0;opacity:.038;pointer-events:none;z-index:1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px}
+
+/* ── NAV ─────────────────────────────────────────*/
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s}
+.nav.scrolled{background:rgba(15,26,18,.97);box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.nav-logo{font-family:var(--ff-d);font-style:italic;font-size:1.35rem;color:var(--white);letter-spacing:-.01em;line-height:1}
+.nav-logo span{font-style:normal;font-weight:600;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;display:block;color:var(--gold-l);margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:1.75rem}
+.nav-links a{color:rgba(255,255,255,.75);font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--gold-l)}
+.nav-cta{background:var(--gold);color:var(--white)!important;padding:.6rem 1.25rem;border-radius:2px;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:background .2s!important}
+.nav-cta:hover{background:var(--gold-d)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:300;background:none;border:none}
+:focus-visible{outline:2px solid var(--gold-l);outline-offset:3px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:1px;transition:all .3s var(--ease)}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-drawer{position:fixed;top:0;right:-100%;width:min(320px,85vw);height:100vh;background:var(--forest-d);z-index:250;transition:right .35s var(--ease);padding:5rem 2rem 2rem;display:flex;flex-direction:column;gap:1.5rem;border-left:1px solid rgba(255,255,255,.08)}
+.mobile-drawer.open{right:0}
+.mobile-drawer a{font-size:1.05rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s}
+.mobile-drawer a:hover{color:var(--gold-l)}
+.mobile-drawer .nav-cta{background:var(--gold);color:#fff;text-align:center;border-bottom:none;border-radius:2px;padding:.9rem;margin-top:.5rem}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:240}
+.overlay.open{display:block}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
+
+/* ── HERO ────────────────────────────────────────*/
+.hero{min-height:100vh;background:linear-gradient(165deg,#0a1008 0%,#0F1A12 30%,#1B2E1F 55%,#243828 75%,#172212 100%);display:flex;flex-direction:column;justify-content:center;padding:8rem 2rem 280px;position:relative;overflow:hidden}
+.hero-watermark{position:absolute;font-family:var(--ff-d);font-style:italic;font-size:clamp(10rem,25vw,36rem);font-weight:700;color:rgba(255,255,255,.032);line-height:.9;bottom:18%;left:50%;transform:translateX(-50%);white-space:nowrap;z-index:1;pointer-events:none;letter-spacing:-.05em;user-select:none}
+.hero-grain{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none}
+.hero-content{position:relative;z-index:3}
+.hero-tag{display:inline-flex;align-items:center;gap:.6rem;font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-l);margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-tag::before{content:'';display:block;width:24px;height:1px;background:var(--gold-l)}
+.hero-title{font-family:var(--ff-d);font-size:clamp(3.5rem,10vw,9.5rem);font-weight:700;color:var(--white);line-height:.93;letter-spacing:-.025em;max-width:1000px;opacity:0;animation:fadeUp .9s .35s forwards}
+.hero-title em{font-style:italic;color:var(--gold-l);font-weight:300}
+.hero-title .county{display:block;font-style:normal;font-size:clamp(1.6rem,4.5vw,4.2rem);font-weight:400;color:rgba(255,255,255,.68);margin-top:.18em;letter-spacing:.02em}
+.hero-title .state{display:block;font-family:var(--ff-b);font-size:clamp(.85rem,1.8vw,1.15rem);font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:.7em;font-style:normal}
+.hero-sub{max-width:520px;font-size:1rem;color:rgba(255,255,255,.52);line-height:1.8;margin-top:2rem;font-weight:300;opacity:0;animation:fadeUp .9s .5s forwards}
+.hero-actions{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .65s forwards}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap;opacity:0;animation:fadeUp .9s .8s forwards;position:relative;z-index:3}
+.hero-stat-n{font-family:var(--ff-d);font-size:2.1rem;font-weight:700;color:var(--white);line-height:1;display:block}
+.hero-stat-l{font-size:.65rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-top:.3rem;display:block}
+.hero-mountain{position:absolute;bottom:-1px;left:0;right:0;height:120px;z-index:2}
+.hero-mountain svg{width:100%;height:100%}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── BUTTONS ─────────────────────────────────────*/
+.btn-gold{display:inline-block;background:var(--gold);color:var(--white);padding:.9rem 2rem;border-radius:2px;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;font-family:var(--ff-b)}
+.btn-gold:hover{background:var(--gold-d)}
+.btn-ghost{display:inline-block;background:transparent;color:var(--white);padding:.85rem 2rem;border-radius:2px;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid rgba(255,255,255,.22);cursor:pointer;transition:all .2s;font-family:var(--ff-b)}
+.btn-ghost:hover{border-color:var(--gold-l);color:var(--gold-l)}
+.btn-forest{display:inline-block;background:var(--forest);color:var(--white);padding:.7rem 1.5rem;border-radius:2px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:background .2s}
+.btn-forest:hover{background:var(--forest-d)}
+.btn-forest-sm{display:inline-block;background:var(--forest);color:var(--white);padding:.55rem 1.1rem;border-radius:2px;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:background .2s}
+.btn-forest-sm:hover{background:var(--forest-d)}
+.btn-gold-sm{display:inline-block;background:var(--gold);color:var(--white);padding:.55rem 1.1rem;border-radius:2px;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:background .2s}
+.btn-gold-sm:hover{background:var(--gold-d)}
+
+/* ── SECTION UTILITIES ───────────────────────────*/
+.section{padding:5.5rem 2rem}
+.section-inner{max-width:var(--max);margin:0 auto}
+.bg-cream{background:var(--cream)}
+.bg-white{background:var(--white)}
+.bg-forest{background:var(--forest)}
+.bg-river{background:var(--river)}
+.bg-char{background:var(--char)}
+.eyebrow{font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;display:block}
+.eyebrow-light{color:var(--gold-l)}
+.section-title{font-family:var(--ff-d);font-size:clamp(1.9rem,4.5vw,3.25rem);font-weight:600;line-height:1.08;letter-spacing:-.02em;color:var(--text)}
+.section-title-light{color:var(--white)}
+.section-lead{font-size:1rem;color:var(--text-m);line-height:1.78;max-width:560px;margin-top:.75rem;font-weight:300}
+.section-lead-light{color:rgba(255,255,255,.58)}
+.section-head{margin-bottom:3rem}
+.section-head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+
+/* ── STRIPS ──────────────────────────────────────*/
+.intro-strip{background:var(--gold);padding:1.25rem 2rem;text-align:center}
+.intro-strip p{font-family:var(--ff-d);font-style:italic;font-size:clamp(1rem,2.5vw,1.5rem);color:var(--white);font-weight:300}
+.intro-strip em{font-weight:600;font-style:normal}
+.cred-strip{background:rgba(15,26,18,.97);border-bottom:1px solid rgba(196,136,42,.12);padding:.9rem 2rem}
+.cred-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap}
+.cred-item{display:flex;align-items:center;gap:.6rem;white-space:nowrap}
+.cred-label{font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.32)}
+.cred-value{font-family:var(--ff-d);font-style:italic;font-size:.88rem;font-weight:300;color:rgba(255,255,255,.65)}
+.cred-sep{color:rgba(196,136,42,.35);font-size:.75rem;display:none}
+@media(min-width:640px){.cred-sep{display:block}}
+
+/* ── FEATURED PARTNERS ───────────────────────────*/
+.partners-section{background:var(--forest-d);padding:5.5rem 2rem;position:relative;overflow:hidden}
+.partners-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 80%,rgba(196,136,42,.07) 0%,transparent 70%);pointer-events:none}
+.partners-header{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:.75rem}
+.partners-slots{display:flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:500;color:rgba(255,255,255,.32);white-space:nowrap}
+.slots-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block}
+.slots-dot.empty{background:rgba(255,255,255,.18)}
+.partner-cards{display:flex;flex-direction:column;gap:1.5rem;margin-top:2.5rem}
+.partner-card{border-radius:4px;overflow:hidden;display:grid;grid-template-columns:2fr 3fr;position:relative;transition:transform .3s var(--ease),box-shadow .3s;min-height:220px}
+.partner-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.45)}
+.partner-card-visual{position:relative;min-height:220px}
+.partner-card-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(15,26,18,.6) 100%)}
+.partner-card-body{background:rgba(15,26,18,.96);padding:2.25rem;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(196,136,42,.2);border-left:none;position:relative}
+.partner-card-body::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:2px;background:linear-gradient(180deg,transparent,var(--gold),transparent)}
+.partner-badge{font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;display:flex;align-items:center;gap:.35rem}
+.partner-badge::before{content:'★';font-size:.48rem}
+.partner-name{font-family:var(--ff-d);font-size:clamp(1.35rem,3vw,2rem);font-weight:700;color:var(--white);line-height:1.05;letter-spacing:-.02em;margin-bottom:.4rem}
+.partner-cat{font-size:.63rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem}
+.partner-desc{font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.72;font-weight:300;flex:1;margin-bottom:1.25rem}
+.partner-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-l);transition:gap .2s}
+.partner-link:hover{gap:.8rem}
+.partner-link svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.partner-slot{border:1.5px dashed rgba(196,136,42,.28);border-radius:4px;padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;background:rgba(196,136,42,.03);transition:border-color .2s}
+.partner-slot:hover{border-color:rgba(196,136,42,.55)}
+.slot-label{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:.5rem}
+.slot-title{font-family:var(--ff-d);font-style:italic;font-size:1.5rem;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:.4rem}
+.slot-price{font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(196,136,42,.45);margin-top:.65rem}
+.slot-right p{font-size:.83rem;color:rgba(255,255,255,.35);line-height:1.72;font-weight:300;margin-bottom:1.25rem}
+@media(max-width:680px){
+  .partner-card{grid-template-columns:1fr}
+  .partner-card-visual{min-height:160px}
+  .partner-card-body{border-left:1px solid rgba(196,136,42,.2);border-top:none;padding:1.75rem}
+  .partner-card-body::before{display:none}
+  .partner-slot{grid-template-columns:1fr}
+}
+
+/* ── ABOUT ───────────────────────────────────────*/
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:3rem}}
+.about-text p{font-size:.95rem;color:var(--text-m);line-height:1.82;margin-bottom:1rem;font-weight:300}
+.about-text p:first-of-type{font-size:1.05rem;color:var(--text);font-weight:400}
+.county-facts{display:grid;grid-template-columns:1fr 1fr;gap:.5rem .75rem;margin-top:1.5rem;padding:1.25rem;background:var(--white);border:1px solid var(--cream-dd);border-radius:4px}
+.county-fact{font-size:.78rem;color:var(--text-m);font-weight:300;line-height:1.5}
+.county-fact strong{color:var(--text);font-weight:600;display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1px}
+#map{height:380px;border-radius:4px;z-index:0}
+.map-wrap{border-radius:4px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.18)}
+.map-fallback{height:380px;background:var(--forest);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem}
+.map-fallback svg{width:44px;height:44px;stroke:var(--gold-l);fill:none;stroke-width:1.5;opacity:.6}
+.map-fallback p{font-size:.75rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.15em}
+.cat-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem}
+.cat-pill{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:100px;border:1.5px solid var(--cream-dd);background:var(--white);font-size:.74rem;font-weight:600;letter-spacing:.05em;cursor:pointer;transition:all .2s;color:var(--text)}
+.cat-pill svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cat-pill:hover,.cat-pill.active{background:var(--forest);border-color:var(--forest);color:var(--white)}
+
+/* ── EXPERIENCES ─────────────────────────────────*/
+.exp-section{background:var(--char);padding:5.5rem 0}
+.exp-head{padding:0 2rem 3rem;max-width:var(--max);margin:0 auto}
+.exp-scroll{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;gap:4px;cursor:grab;padding:0 2rem;padding-right:calc(2rem + 15vw)}
+.exp-scroll:active{cursor:grabbing}
+.exp-scroll::-webkit-scrollbar{display:none}
+.exp-slide{flex:0 0 min(72vw,560px);scroll-snap-align:start;border-radius:4px;overflow:hidden;position:relative;height:420px;transition:transform .35s var(--ease)}
+.exp-slide:hover{transform:scale(1.01)}
+.exp-slide-inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:2.25rem}
+.exp-slide-inner::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,transparent 25%,rgba(0,0,0,.55) 65%,rgba(0,0,0,.8) 100%)}
+.exp-num{position:absolute;top:1.75rem;right:2rem;font-family:var(--ff-d);font-size:5rem;font-weight:700;color:rgba(255,255,255,.06);line-height:1}
+.exp-content{position:relative;z-index:1}
+.exp-tag{font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.6rem}
+.exp-card-title{font-family:var(--ff-d);font-size:1.65rem;font-weight:600;color:var(--white);line-height:1.12;margin-bottom:.6rem}
+.exp-card-desc{font-size:.82rem;color:rgba(255,255,255,.58);line-height:1.65;font-weight:300;max-width:380px}
+.exp-card-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-l);margin-top:1.1rem;transition:gap .2s}
+.exp-card-link:hover{gap:.7rem}
+.exp-card-link svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.exp-scroll-hint{display:flex;align-items:center;gap:.5rem;padding:.75rem 2rem 0;font-size:.65rem;color:rgba(255,255,255,.2);letter-spacing:.1em;text-transform:uppercase}
+.exp-scroll-hint svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+
+/* ── TOWN TABS ───────────────────────────────────*/
+.tab-nav{display:flex;border-bottom:2px solid var(--cream-dd);margin-bottom:3rem}
+.tab-btn{padding:.85rem 2rem;font-family:var(--ff-b);font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:none;background:none;cursor:pointer;color:var(--text-l);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s}
+.tab-btn.active{color:var(--forest);border-bottom-color:var(--gold)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.town-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media(max-width:768px){.town-grid{grid-template-columns:1fr}}
+.town-card{background:var(--white);border:1px solid var(--cream-dd);border-radius:4px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.town-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.town-card-photo{height:140px}
+.town-card-body{padding:1.5rem}
+.town-card-icon{width:38px;height:38px;background:var(--cream);border-radius:3px;display:flex;align-items:center;justify-content:center;margin-bottom:.85rem}
+.town-card-icon svg{width:18px;height:18px;stroke:var(--gold-d);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.town-card-name{font-family:var(--ff-d);font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:.35rem}
+.town-card-desc{font-size:.82rem;color:var(--text-m);line-height:1.68;font-weight:300}
+
+/* ── CATEGORY REFERENCE LISTS (dining / shopping) */
+/* These are reference tools — no editorial descriptions.
+   Businesses that want editorial coverage become Featured Partners. */
+.catref-section{padding:5.5rem 2rem}
+.catref-intro{font-size:.82rem;color:var(--text-m);line-height:1.72;font-weight:300;max-width:640px;margin-bottom:2rem;padding:.85rem 1rem;background:var(--cream-d);border-left:3px solid var(--gold);border-radius:0 3px 3px 0}
+.catref-intro strong{color:var(--text);font-weight:600}
+.catref-town-label{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text-l);padding:.5rem 0 .4rem;border-bottom:1px solid var(--cream-dd);margin-top:2rem;margin-bottom:.25rem}
+.catref-town-label:first-of-type{margin-top:0}
+.catref-list{display:flex;flex-direction:column}
+.catref-item{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;padding:.6rem .5rem;border-bottom:1px solid rgba(0,0,0,.05);transition:background .12s}
+.catref-item:hover{background:rgba(0,0,0,.025);border-radius:2px}
+.catref-item-left{display:flex;align-items:baseline;gap:.75rem;min-width:0}
+.catref-item-name{font-size:.88rem;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.catref-item-type{font-size:.63rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-l);white-space:nowrap;flex-shrink:0}
+.catref-item-link{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-d);white-space:nowrap;flex-shrink:0;transition:color .15s}
+.catref-item-link:hover{color:var(--gold)}
+.catref-more{font-size:.78rem;color:var(--text-l);padding:.6rem .5rem;font-style:italic}
+/* The upgrade CTA — visually distinct, positioned right after the list */
+.catref-upgrade{margin-top:2.5rem;background:var(--forest-d);border-radius:4px;padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.catref-upgrade-text p:first-child{font-size:.88rem;font-weight:500;color:var(--white);margin-bottom:.25rem}
+.catref-upgrade-text p:last-child{font-size:.78rem;color:rgba(255,255,255,.42);font-weight:300;line-height:1.6;max-width:440px}
+.catref-upgrade-text p:last-child strong{color:var(--gold-l);font-weight:500}
+.catref-upgrade-btns{display:flex;gap:.75rem;flex-wrap:wrap;flex-shrink:0}
+
+/* ── EVENTS ──────────────────────────────────────*/
+.events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.event-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:1.75rem;transition:border-color .2s,transform .2s}
+.event-card:hover{border-color:rgba(196,136,42,.45);transform:translateY(-2px)}
+.event-month{font-size:.63rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.5rem}
+.event-title{font-family:var(--ff-d);font-size:1.25rem;font-weight:600;color:var(--white);line-height:1.18;margin-bottom:.45rem}
+.event-location{font-size:.76rem;color:rgba(255,255,255,.38)}
+.event-desc{font-size:.83rem;color:rgba(255,255,255,.52);line-height:1.68;margin-top:.7rem;font-weight:300}
+.event-tag{display:inline-block;background:rgba(196,136,42,.14);color:var(--gold-l);font-size:.63rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .75rem;border-radius:100px;margin-top:.9rem;border:1px solid rgba(196,136,42,.22)}
+
+/* ── TESTIMONIALS ────────────────────────────────*/
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:3rem}
+.testi-card{background:var(--cream);border:1px solid var(--cream-dd);border-radius:4px;padding:2rem;position:relative;transition:box-shadow .25s}
+.testi-card:hover{box-shadow:0 6px 28px rgba(0,0,0,.08)}
+.testi-stars{color:var(--gold);font-size:.85rem;letter-spacing:.1rem;margin-bottom:1rem}
+.testi-quote{font-family:var(--ff-d);font-style:italic;font-size:1rem;font-weight:300;color:var(--text);line-height:1.7;margin-bottom:1.25rem}
+.testi-author{display:flex;align-items:center;gap:.75rem}
+.testi-avatar{width:38px;height:38px;border-radius:50%;background:var(--forest);color:var(--gold-l);font-family:var(--ff-d);font-style:italic;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.testi-name{font-size:.8rem;font-weight:600;color:var(--text);display:block}
+.testi-from{font-size:.72rem;color:var(--text-l);font-weight:300;display:block}
+.testi-mark{position:absolute;top:1.5rem;right:1.75rem;font-family:var(--ff-d);font-size:4rem;color:rgba(196,136,42,.12);line-height:1;font-style:italic}
+
+/* ── PRICING + DIRECTORY ─────────────────────────*/
+.pricing-section{background:var(--forest-d);padding:5.5rem 2rem;position:relative;overflow:hidden}
+.pricing-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(196,136,42,.06) 0%,transparent 70%);pointer-events:none}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
+@media(max-width:768px){.pricing-grid{grid-template-columns:1fr;gap:1rem}}
+.pricing-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2rem;transition:transform .25s}
+.pricing-card:hover{transform:translateY(-3px)}
+.pricing-card.featured{background:rgba(196,136,42,.08);border-color:rgba(196,136,42,.45);position:relative}
+.pricing-featured-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .9rem;border-radius:0 0 3px 3px}
+.pricing-tier{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.6rem}
+.pricing-price{font-family:var(--ff-d);font-size:2.75rem;font-weight:700;color:var(--white);line-height:1;margin-bottom:.25rem}
+.pricing-price span{font-size:.9rem;font-weight:300;color:rgba(255,255,255,.4);font-family:var(--ff-b)}
+.pricing-desc{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.65;font-weight:300;margin-bottom:1.5rem;min-height:3.5em}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.75rem}
+.pricing-features li{font-size:.8rem;color:rgba(255,255,255,.58);display:flex;align-items:flex-start;gap:.5rem;font-weight:300}
+.pricing-features li::before{content:'✓';color:var(--gold-l);flex-shrink:0;font-weight:700;font-size:.75rem;margin-top:.05rem}
+.pricing-features li.dim{color:rgba(255,255,255,.22)}
+.pricing-features li.dim::before{color:rgba(255,255,255,.18);content:'—'}
+.pricing-stat-row{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:3.5rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.08)}
+.pricing-stat-n{font-family:var(--ff-d);font-size:2rem;font-weight:700;color:var(--white);display:block;line-height:1}
+.pricing-stat-l{font-size:.62rem;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;margin-top:.3rem;display:block;text-align:center}
+/* Directory — name / link only */
+.directory-section{margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.08)}
+.directory-header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.75rem;margin-bottom:.4rem}
+.directory-title{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.directory-note{font-size:.7rem;color:rgba(255,255,255,.2);font-style:italic}
+.directory-subtext{font-size:.78rem;color:rgba(255,255,255,.22);line-height:1.65;margin-bottom:1.5rem;max-width:560px}
+.directory-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.25rem}
+.directory-item{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.5rem .65rem;border-radius:2px;transition:background .12s}
+.directory-item:hover{background:rgba(255,255,255,.04)}
+.directory-item-left{display:flex;align-items:baseline;gap:.6rem;min-width:0}
+.directory-item-name{font-size:.82rem;font-weight:400;color:rgba(255,255,255,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.directory-item-cat{font-size:.6rem;color:rgba(255,255,255,.2);letter-spacing:.08em;white-space:nowrap;flex-shrink:0}
+.directory-item-link{font-size:.63rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(196,136,42,.42);white-space:nowrap;flex-shrink:0;transition:color .15s}
+.directory-item-link:hover{color:var(--gold-l)}
+.directory-submit-row{margin-top:1.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.directory-submit-row p{font-size:.76rem;color:rgba(255,255,255,.22);font-weight:300;font-style:italic}
+
+/* ── LODGING ─────────────────────────────────────*/
+.lodging-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.lodge-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:1.75rem;transition:border-color .2s}
+.lodge-card:hover{border-color:rgba(255,255,255,.22)}
+.lodge-type{font-size:.63rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.5rem}
+.lodge-name{font-family:var(--ff-d);font-size:1.15rem;font-weight:600;color:var(--white);margin-bottom:.4rem}
+.lodge-desc{font-size:.82rem;color:rgba(255,255,255,.52);line-height:1.68;font-weight:300}
+.lodge-detail{font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.75rem;display:flex;align-items:flex-start;gap:.4rem;line-height:1.5}
+.lodge-detail svg{width:11px;height:11px;stroke:var(--gold-l);fill:none;stroke-width:2;flex-shrink:0;margin-top:2px}
+.lodge-detail a{text-decoration:underline}
+.lodge-actions{display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:.9rem}
+.lodge-actions a{font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-l);transition:color .15s}
+.lodge-actions a:hover{color:var(--white)}
+
+/* ── ITINERARY + SEASONS ─────────────────────────*/
+.plan-block{margin-bottom:3.5rem}
+.plan-subhead{font-family:var(--ff-d);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;color:var(--white);letter-spacing:-.02em;margin-bottom:.4rem}
+.itin-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem}
+@media(max-width:768px){.itin-grid{grid-template-columns:1fr}}
+.itin-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:4px;padding:1.75rem}
+.itin-day{font-size:.63rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.4rem}
+.itin-title{font-family:var(--ff-d);font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:1rem}
+.itin-list{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.itin-list li{display:flex;gap:.75rem;font-size:.84rem;color:rgba(255,255,255,.6);line-height:1.55;font-weight:300}
+.itin-time{flex-shrink:0;width:62px;font-weight:600;color:rgba(255,255,255,.45);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;padding-top:2px}
+.season-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-top:1.5rem}
+.season-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:1.1rem 1.25rem}
+.season-name{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.4rem}
+.season-desc{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.6;font-weight:300}
+
+/* ── FOOTER ──────────────────────────────────────*/
+.footer{background:var(--forest-d);padding:4.5rem 2rem 2.5rem}
+.footer-inner{max-width:var(--max);margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:500px){.footer-top{grid-template-columns:1fr}}
+.footer-brand{font-family:var(--ff-d);font-style:italic;font-size:1.5rem;color:var(--white);margin-bottom:.6rem}
+.footer-brand span{font-size:.65rem;font-style:normal;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-l);display:block;margin-top:.2rem}
+.footer-about{font-size:.82rem;color:rgba(255,255,255,.32);line-height:1.72;font-weight:300;max-width:280px;margin-bottom:1rem}
+.footer-tagline{font-size:.72rem;color:rgba(196,136,42,.5);letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+.footer-col-title{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-l);margin-bottom:1rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-links a{font-size:.82rem;color:rgba(255,255,255,.38);transition:color .2s;font-weight:300}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{padding-top:2rem;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,.22)}
+.footer-copy strong{color:var(--gold-l)}
+.footer-built{font-size:.68rem;color:rgba(255,255,255,.18);font-style:italic}
+
+/* ── BACK TO TOP ─────────────────────────────────*/
+.back-top{position:fixed;bottom:2rem;right:1.5rem;z-index:150;width:44px;height:44px;background:var(--gold);color:#fff;border:none;border-radius:2px;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);transition:opacity .3s,transform .3s,background .2s;pointer-events:none}
+.back-top.visible{opacity:1;transform:translateY(0);pointer-events:all}
+.back-top:hover{background:var(--gold-d)}
+
+/* ── REVEAL ──────────────────────────────────────*/
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── LEAFLET ─────────────────────────────────────*/
+.leaflet-container{font-family:var(--ff-b)!important;background:#0d1a10}
+.leaflet-popup-content-wrapper{background:var(--forest-d);color:var(--cream);border-radius:3px;box-shadow:0 4px 20px rgba(0,0,0,.5);border:1px solid rgba(196,136,42,.25)}
+.leaflet-popup-tip{background:var(--forest-d)}
+.leaflet-popup-content{font-family:var(--ff-b);font-size:.82rem;line-height:1.6}
+.leaflet-popup-content strong{color:var(--gold-l);display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+
+@media(max-width:600px){
+  .section,.catref-section{padding:4rem 1.25rem}
+  .hero{padding:7rem 1.25rem 240px}
+  .hero-stats{gap:1.5rem}
+  .exp-slide{flex:0 0 88vw}
+  .pricing-grid{grid-template-columns:1fr}
+  .partners-section{padding:4rem 1.25rem}
+  .catref-upgrade{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav-logo">Discover<span>Jackson County, WV</span></a>
+  <div class="nav-links">
+    <a href="#explore">Explore</a>
+    <a href="#dining">Dining</a>
+    <a href="#shopping">Shopping</a>
+    <a href="#events">Events</a>
+    <a href="#plan">Plan Your Trip</a>
+    <a href="#partner" class="nav-cta">Advertise</a>
+  </div>
+  <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="mobile-drawer" id="drawer">
+  <a href="#explore" onclick="toggleMenu()">Explore</a>
+  <a href="#dining" onclick="toggleMenu()">Dining</a>
+  <a href="#shopping" onclick="toggleMenu()">Shopping</a>
+  <a href="#events" onclick="toggleMenu()">Events</a>
+  <a href="#plan" onclick="toggleMenu()">Plan Your Trip</a>
+  <a href="#about" onclick="toggleMenu()">About the County</a>
+  <a href="#partner" class="nav-cta" onclick="toggleMenu()">Advertise</a>
+</div>
+
+<!-- HERO -->
+<section class="hero grain">
+  <div class="hero-grain"></div>
+  <div class="hero-watermark">Discover</div>
+  <div class="hero-content">
+    <p class="hero-tag">Jackson County &nbsp;&middot;&nbsp; West Virginia &nbsp;&middot;&nbsp; Almost Heaven</p>
+    <h1 class="hero-title">
+      <em>Discover</em>
+      <span class="county">Jackson County</span>
+      <span class="state">West Virginia</span>
+    </h1>
+    <p class="hero-sub">Two river towns. Hundreds of thousands of annual visitors. America's largest small-town Independence Day. Kayak trails, Ohio River sunsets, and moonshine poured from the cornstalk to the bottle. This is the West Virginia they don't put on the postcards.</p>
+    <div class="hero-actions">
+      <a href="#explore" class="btn-gold">Start Exploring</a>
+      <a href="#plan" class="btn-ghost">Plan Your Visit</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="hero-stat-n">500K</span><span class="hero-stat-l">Annual Visitors</span></div>
+      <div><span class="hero-stat-n">150+</span><span class="hero-stat-l">Years of Heritage</span></div>
+      <div><span class="hero-stat-n">20 mi</span><span class="hero-stat-l">Water Trail</span></div>
+      <div><span class="hero-stat-n">2 Towns</span><span class="hero-stat-l">One County</span></div>
+    </div>
+  </div>
+  <div class="hero-mountain">
+    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,120 L0,80 C80,55 160,38 280,58 C370,74 430,42 550,52 C640,60 700,30 820,42 C900,50 960,22 1060,34 C1150,44 1220,18 1320,28 C1380,34 1420,18 1440,24 L1440,120 Z" fill="#F4F0E8"/>
+    </svg>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <p>Where the Appalachians meet the Ohio River &nbsp;&mdash;&nbsp; <em>Ripley and Ravenswood, West Virginia</em></p>
+</div>
+
+<!-- CREDIBILITY STRIP -->
+<div class="cred-strip">
+  <div class="cred-inner">
+    <div class="cred-item"><span class="cred-label">July 4th Featured On</span><span class="cred-value">NBC's TODAY Show, since 1965</span></div>
+    <span class="cred-sep">&#9642;</span>
+    <div class="cred-item"><span class="cred-value">Hundreds of Thousands of Annual Visitors</span></div>
+    <span class="cred-sep">&#9642;</span>
+    <div class="cred-item"><span class="cred-value">America's Largest Small-Town Independence Day</span></div>
+    <span class="cred-sep">&#9642;</span>
+    <div class="cred-item"><span class="cred-label">WV Tourism (Statewide)</span><span class="cred-value">$9.1B Economic Impact</span></div>
+  </div>
+</div>
+
+<!-- FEATURED PARTNERS — near top, premium showcase -->
+<section class="partners-section reveal" id="partner">
+  <div class="section-inner">
+    <div class="partners-header">
+      <div>
+        <span class="eyebrow eyebrow-light">Featured Partners</span>
+        <h2 class="section-title section-title-light">Places We Recommend</h2>
+        <p class="section-lead section-lead-light">A curated selection of Jackson County businesses worth your time — editorially reviewed, not just listed.</p>
+      </div>
+      <div class="partners-slots">
+        <span class="slots-dot"></span>
+        <span class="slots-dot"></span>
+        <span class="slots-dot"></span>
+        <span class="slots-dot empty"></span>
+        <span class="slots-dot empty"></span>
+        <span style="margin-left:.4rem">Limited to 8 partners &middot; inquire for availability</span>
+      </div>
+    </div>
+    <div class="partner-cards">
+
+      <div class="partner-card">
+        <div class="partner-card-visual bg-cedar grain"></div>
+        <div class="partner-card-body">
+          <div>
+            <p class="partner-badge">Featured Partner</p>
+            <p class="partner-name">Cedar Lakes Conference Center</p>
+            <p class="partner-cat">Event Venue &amp; Lodging &nbsp;&middot;&nbsp; Ripley, WV</p>
+            <p class="partner-desc">West Virginia's most-visited venue — 450 acres with four lakes, 30 buildings, and overnight lodging for groups of 20 to 500. Home of the Mountain State Art &amp; Craft Fair and the 1887 Staats Mill Covered Bridge. Open year-round for conferences, weddings, youth camps, disc golf, and hiking. Four miles from downtown Ripley.</p>
+          </div>
+          <a href="https://www.cedarlakes.com" class="partner-link" target="_blank">Visit cedarlakes.com <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-card-visual bg-gold-dark grain"></div>
+        <div class="partner-card-body">
+          <div>
+            <p class="partner-badge">Featured Partner</p>
+            <p class="partner-name">Appalachian Distillery</p>
+            <p class="partner-cat">Distillery &amp; Tasting Room &nbsp;&middot;&nbsp; Ripley, WV</p>
+            <p class="partner-desc">Craft moonshine produced from the cornstalk to the bottle in Ripley, WV. Traditional white lightning alongside signature WV flavors — paw paw, blackberry, peach, and strawberry lemonade. One of the most distinctive and unexpected stops in the region.</p>
+          </div>
+          <a href="https://www.appalachiandistillery.com" class="partner-link" target="_blank" rel="noopener">Visit appalachiandistillery.com <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-card-visual bg-river grain"></div>
+        <div class="partner-card-body">
+          <div>
+            <p class="partner-badge">Featured Partner</p>
+            <p class="partner-name">Great Bend Campground &amp; Marina</p>
+            <p class="partner-cat">Camping &amp; Marina &nbsp;&middot;&nbsp; Ravenswood, WV</p>
+            <p class="partner-desc">Ravenswood's Ohio River base camp. Full hookup RV sites from $40/night, boat slips from $10/night, and direct access to the river at Washington's Riverfront Park. Within 45 miles of Cedar Lakes, Parkersburg, and Charleston — the ideal staging point for the whole region.</p>
+          </div>
+          <a href="https://greatbendcampground.com" class="partner-link" target="_blank">Reserve a Site <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <div class="partner-slot">
+        <div>
+          <p class="slot-label">Limited availability</p>
+          <p class="slot-title">Your Business Here</p>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.38);line-height:1.72;font-weight:300;margin-top:.5rem">A featured card at the top of this page — the first thing every visitor reads about Jackson County businesses.</p>
+          <p class="slot-price">$45 / month &nbsp;&middot;&nbsp; Cancel anytime &nbsp;&middot;&nbsp; No long-term contract</p>
+          <p style="font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.7;font-weight:300;margin-top:.6rem">No setup fee &middot; We write your copy and you approve it before it goes live &middot; Card live within 5 business days &middot; Cancel any time and your card comes down at the end of the month.</p>
+        </div>
+        <div class="slot-right">
+          <p>Featured partners get a full editorial description we write for you, a photo-background showcase card, social media mentions, event cross-listing, and quarterly click analytics. Your business name doesn't just appear — it gets remembered.</p>
+          <a href="mailto:hello@discoverjacksoncountywv.com?subject=Featured Partnership Inquiry" class="btn-gold">Become a Partner</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section bg-cream reveal" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="eyebrow">About the County</span>
+        <h2 class="section-title">Hidden in the Appalachian Foothills</h2>
+        <p>Jackson County sits between Charleston and Parkersburg along the Ohio River — close enough to reach from half a dozen states, far enough to feel like another world. A place people return to every July 4th, that draws hundreds of thousands of visitors a year across its marquee events, and that has been quietly worth visiting for over 150 years.</p>
+        <p>Its two towns have distinct characters. Ripley, the county seat, is the kind of American small town that gets voted Most Community Pride and actually deserves it. Ravenswood, on the Ohio River, was named after a hero from a Walter Scott novel and is building something new on the banks of one of America's great rivers.</p>
+        <div class="county-facts">
+          <div class="county-fact"><strong>Founded</strong>March 1, 1831</div>
+          <div class="county-fact"><strong>County Seat</strong>Ripley, WV</div>
+          <div class="county-fact"><strong>Population</strong>~27,500</div>
+          <div class="county-fact"><strong>Area</strong>471 sq miles</div>
+          <div class="county-fact"><strong>I-77 Access</strong>Exit 138, Ripley</div>
+          <div class="county-fact"><strong>Named For</strong>President Jackson</div>
+        </div>
+        <div class="cat-row">
+          <div class="cat-pill active"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Outdoors</div>
+          <div class="cat-pill"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Events</div>
+          <div class="cat-pill"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Food &amp; Drink</div>
+          <div class="cat-pill"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Arts</div>
+        </div>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <div id="map"></div>
+          <div id="map-fallback" class="map-fallback" style="display:none">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span style="font-family:var(--ff-d);font-style:italic;font-size:1.3rem;color:rgba(255,255,255,.45);font-weight:300">Jackson County, WV</span>
+            <p>Map unavailable — <a href="https://www.google.com/maps/place/Jackson+County,+WV" target="_blank" rel="noopener" style="color:var(--gold-l);text-decoration:underline">view on Google Maps</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE EXPERIENCES -->
+<section class="exp-section reveal" id="explore">
+  <div class="exp-head">
+    <span class="eyebrow eyebrow-light">Signature Experiences</span>
+    <h2 class="section-title section-title-light">The Reasons People Come</h2>
+    <p class="section-lead section-lead-light">Drag or swipe to explore four defining Jackson County experiences.</p>
+  </div>
+  <div class="exp-scroll" id="expScroll">
+    <div class="exp-slide bg-cedar grain">
+      <span class="exp-num">01</span>
+      <div class="exp-slide-inner"><div class="exp-content">
+        <p class="exp-tag">Ripley &nbsp;&middot;&nbsp; Cedar Lakes</p>
+        <h3 class="exp-card-title">Cedar Lakes Conference Center</h3>
+        <p class="exp-card-desc">450 acres. Four lakes. Half a million visitors a year. Home to the Mountain State Art &amp; Craft Fair, the 1887 Staats Mill Covered Bridge, disc golf, and trails. West Virginia's most-visited venue, four miles from downtown Ripley.</p>
+        <a href="https://www.cedarlakes.com" class="exp-card-link" target="_blank">Visit Cedar Lakes <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div></div>
+    </div>
+    <div class="exp-slide bg-july4 grain">
+      <span class="exp-num">02</span>
+      <div class="exp-slide-inner"><div class="exp-content">
+        <p class="exp-tag">Ripley &nbsp;&middot;&nbsp; July 2&ndash;5</p>
+        <h3 class="exp-card-title">America's Largest Small-Town Independence Day</h3>
+        <p class="exp-card-desc">Six days. A 200-unit parade. A town of 3,000 that becomes 20,000. Free concerts, fireworks, the Firecracker 2-Miler, a watermelon contest, and a mullet contest. The TODAY show called it in 1965.</p>
+        <a href="https://www.ripleyfourthofjuly.com" class="exp-card-link" target="_blank">Learn More <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div></div>
+    </div>
+    <div class="exp-slide bg-river grain">
+      <span class="exp-num">03</span>
+      <div class="exp-slide-inner"><div class="exp-content">
+        <p class="exp-tag">Ravenswood &nbsp;&middot;&nbsp; Ohio River</p>
+        <h3 class="exp-card-title">The Ohio River &amp; Great Bend</h3>
+        <p class="exp-card-desc">Washington's Riverfront Park sits directly on one of America's great rivers. Fishing, boat launch, bird watching, the annual Ohio River Festival, and Great Bend Marina with full RV hookups.</p>
+        <a href="#plan" class="exp-card-link">Plan Your Stay <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div></div>
+    </div>
+    <div class="exp-slide bg-trails grain">
+      <span class="exp-num">04</span>
+      <div class="exp-slide-inner"><div class="exp-content">
+        <p class="exp-tag">County-Wide &nbsp;&middot;&nbsp; Recreation</p>
+        <h3 class="exp-card-title">Trails, Water &amp; Craft Spirits</h3>
+        <p class="exp-card-desc">Paddle 20+ miles from Ripley to Cottageville on Mill Creek. Hike or ride 13 miles on the Kevin Clegg Trail System at Eastwood Recreation Area in Ravenswood. End the day at a local craft distillery with paw paw moonshine — cornstalk to bottle in Ripley.</p>
+        <a href="#explore-towns" class="exp-card-link">Explore More <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div></div>
+    </div>
+  </div>
+  <p class="exp-scroll-hint"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>Drag to explore</p>
+</section>
+
+<!-- EXPLORE BY TOWN -->
+<section class="section bg-cream reveal" id="explore-towns">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Explore by Town</span>
+      <h2 class="section-title">Two Towns, Countless Reasons</h2>
+      <p class="section-lead">Ripley and Ravenswood sit 11 miles apart and cover everything from Appalachian craft spirits to Ohio River sunsets.</p>
+    </div>
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('ripley',this)">Ripley</button>
+      <button class="tab-btn" onclick="switchTab('ravenswood',this)">Ravenswood</button>
+    </div>
+    <div id="tab-ripley" class="tab-content active">
+      <div class="town-grid">
+        <div class="town-card">
+          <div class="town-card-photo bg-cedar"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+            <p class="town-card-name">Conference &amp; Event Venue</p>
+            <p class="town-card-desc">Four miles from downtown sits West Virginia's most-visited venue — 450 acres with four lakes, lodging for hundreds, and year-round events and workshops.</p>
+          </div>
+        </div>
+        <div class="town-card">
+          <div class="town-card-photo bg-trails"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 2a4 4 0 0 1 4 4c0 3-4 6-4 6S8 9 8 6a4 4 0 0 1 4-4z"/></svg></div>
+            <p class="town-card-name">Craft Distillery</p>
+            <p class="town-card-desc">Ripley is home to one of WV's most distinctive craft spirits producers — traditional moonshine and unique WV flavors made cornstalk to bottle.</p>
+          </div>
+        </div>
+        <div class="town-card">
+          <div class="town-card-photo bg-river"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 0 0 6.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 0 0 6.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg></div>
+            <p class="town-card-name">Water Trail</p>
+            <p class="town-card-desc">A 20+ mile kayak journey from Ripley to Cottageville along Mill Creek — one of West Virginia's most accessible and scenic water trails.</p>
+          </div>
+        </div>
+        <div class="town-card">
+          <div class="town-card-photo bg-harvest"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <p class="town-card-name">Artisan Market &amp; Historic Theatre</p>
+            <p class="town-card-desc">Over 100 local artisans, live performances, concerts, and film at a Main Street landmark operating since 1936.</p>
+          </div>
+        </div>
+        <div class="town-card">
+          <div class="town-card-photo bg-cedar"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+            <p class="town-card-name">City Park &amp; Recreation</p>
+            <p class="town-card-desc">Olympic-size pool with water slide, skateboard park, lit tennis courts, picnic shelters, and a gazebo. Ripley's community hub — free to visit.</p>
+          </div>
+        </div>
+        <div class="town-card">
+          <div class="town-card-photo bg-harvest"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            <p class="town-card-name">Local Dining &amp; Shopping</p>
+            <p class="town-card-desc">From WV-style hot dogs to hand-cut steaks, local boutiques to artisan goods — Ripley's independent businesses are worth exploring. See our <a href="#dining" style="color:var(--gold-d);font-weight:600">Dining</a> and <a href="#shopping" style="color:var(--gold-d);font-weight:600">Shopping</a> sections.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="tab-ravenswood" class="tab-content">
+      <div class="town-grid">
+        <div class="town-card">
+          <div class="town-card-photo bg-trails"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <p class="town-card-name">Trail System</p>
+            <p class="town-card-desc">The Kevin Clegg Trail System at Eastwood Recreation Area — nine trails totaling 13 miles across 120 acres. Hiking, mountain biking, and trail running for all skill levels. Actively expanding.</p>
+          </div>
+        </div>
+        <div class="town-card">
+          <div class="town-card-photo bg-ravenswood"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div>
+            <p class="town-card-name">Ohio Riverfront</p>
+            <p class="town-card-desc">Washington's Riverfront Park on the Ohio River — fishing, boat launch, bird watching, walking trails, and a performance stage hosting major acts each August.</p>
+          </div>
+        </div>
+        <div class="town-card">
+          <div class="town-card-photo bg-harvest"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <p class="town-card-name">Local History &amp; Museum</p>
+            <p class="town-card-desc">Native American roots through the 20th century, including a remarkable early-1900s photography exhibit documenting Ravenswood in extraordinary detail.</p>
+          </div>
+        </div>
+        <div class="town-card">
+          <div class="town-card-photo bg-river"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.88 9.88a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.99 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 5.99 5.99l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <p class="town-card-name">Campground &amp; Marina</p>
+            <p class="town-card-desc">Full RV hookups, boat slips, and direct Ohio River access — within 45 miles of three major markets.</p>
+          </div>
+        </div>
+        <div class="town-card">
+          <div class="town-card-photo bg-ravenswood"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <p class="town-card-name">Ohio River Festival</p>
+            <p class="town-card-desc">Major performers, fireworks by Premier Pyrotechnics, a crazy boat race, and a full carnival at Washington's Riverfront Park each August.</p>
+          </div>
+        </div>
+        <div class="town-card">
+          <div class="town-card-photo bg-harvest"></div>
+          <div class="town-card-body">
+            <div class="town-card-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <p class="town-card-name">Downtown Revival</p>
+            <p class="town-card-desc">Ravenswood's OnTRAC Main Street program is bringing new energy to Washington Street. New businesses, events, and the annual Harvest in the Wood festival.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DINING — reference list only, no editorial descriptions -->
+<section class="catref-section bg-white reveal" id="dining">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Where to Eat</span>
+      <h2 class="section-title">Dining in Jackson County</h2>
+      <p class="section-lead">A quick reference to local restaurants — no chains listed. Want the full story on a specific restaurant? Featured Partners get an editorial description visitors actually read.</p>
+    </div>
+
+    <div class="catref-intro">
+      This is a <strong>reference list</strong> — name and category only. For a business that wants visitors to read about them before they arrive, that's what a <a href="#partner" style="color:var(--gold-d);font-weight:600">Featured Partnership</a> delivers.
+    </div>
+
+    <div class="catref-list">
+      <p class="catref-town-label">Ripley</p>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">The Downtowner</span><span class="catref-item-type">American Comfort</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Las Trancas</span><span class="catref-item-type">Mexican</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Roadhouse 2081</span><span class="catref-item-type">Steaks &amp; Seafood</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Pete's Hot Dogs</span><span class="catref-item-type">WV Hot Dogs</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Fairplain Yacht Club</span><span class="catref-item-type">Creative American</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Samurai Hibachi &amp; Sushi</span><span class="catref-item-type">Japanese</span></div>
+      </div>
+
+      <p class="catref-town-label">Ravenswood</p>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">The Ravenswood Inn</span><span class="catref-item-type">Breakfast (B&amp;B guests)</span></div>
+        <a href="https://www.ravenswoodinn.com" class="catref-item-link" target="_blank">ravenswoodinn.com ↗</a>
+      </div>
+      <p class="catref-more">Ravenswood dining directory expanding as OnTRAC revitalization brings new openings — <a href="mailto:hello@discoverjacksoncountywv.com?subject=Dining Directory Request - Ravenswood" style="color:var(--gold-d)">submit your listing</a>.</p>
+    </div>
+
+    <div class="catref-upgrade">
+      <div class="catref-upgrade-text">
+        <p>Is your restaurant listed here?</p>
+        <p>A basic listing puts your name in front of every visitor. <strong>A Featured Partnership is how they actually learn about you</strong> — full editorial description, photo card, and placement at the top of the page where visitors make decisions.</p>
+      </div>
+      <div class="catref-upgrade-btns">
+        <a href="mailto:hello@discoverjacksoncountywv.com?subject=Dining Directory Request" class="btn-forest-sm">Add Free Listing</a>
+        <a href="#partner" class="btn-gold-sm">Become a Partner</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOPPING — reference list only -->
+<section class="catref-section bg-cream reveal" id="shopping">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Where to Shop</span>
+      <h2 class="section-title">Shopping in Jackson County</h2>
+      <p class="section-lead">Independent local shops in Ripley and Ravenswood. For the full Ripley business directory, see <a href="https://shopripleywv.com" target="_blank" style="color:var(--gold-d);font-weight:600">shopripleywv.com</a>.</p>
+    </div>
+
+    <div class="catref-intro">
+      This is a <strong>reference list</strong> — name and category only. For a business that wants visitors to read about them before they arrive, that's what a <a href="#partner" style="color:var(--gold-d);font-weight:600">Featured Partnership</a> delivers.
+    </div>
+
+    <div class="catref-list">
+      <p class="catref-town-label">Ripley</p>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Vail Furniture</span><span class="catref-item-type">Furniture &amp; Home — Est. 1844</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">WV Artisan Market</span><span class="catref-item-type">Artisan Goods &amp; Crafts</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Two Eighteen</span><span class="catref-item-type">Women's Boutique</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Millcreek Trading Company</span><span class="catref-item-type">Country Decor &amp; WV Gifts</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Jewelers Touch</span><span class="catref-item-type">Jewelry &amp; Watches</span></div>
+      </div>
+
+      <p class="catref-town-label">Ravenswood</p>
+      <p class="catref-more">Ravenswood shopping expanding as OnTRAC revitalization brings new businesses to Washington Street — <a href="mailto:hello@discoverjacksoncountywv.com?subject=Shopping Directory Request - Ravenswood" style="color:var(--gold-d)">submit your listing</a>.</p>
+
+      <p class="catref-town-label" style="margin-top:1.5rem">Full Directory</p>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Shop Ripley WV</span><span class="catref-item-type">Comprehensive Local Business Directory</span></div>
+        <a href="https://shopripleywv.com" class="catref-item-link" target="_blank">shopripleywv.com ↗</a>
+      </div>
+    </div>
+
+    <div class="catref-upgrade">
+      <div class="catref-upgrade-text">
+        <p>Is your shop listed here?</p>
+        <p>A basic listing puts your name in front of every visitor planning a Jackson County trip. <strong>A Featured Partnership is how they read about you</strong> — editorial description, photo card, and top-of-page placement before they even arrive.</p>
+      </div>
+      <div class="catref-upgrade-btns">
+        <a href="mailto:hello@discoverjacksoncountywv.com?subject=Shopping Directory Request" class="btn-forest-sm">Add Free Listing</a>
+        <a href="#partner" class="btn-gold-sm">Become a Partner</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="section bg-forest reveal" id="events">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow eyebrow-light">Mark Your Calendar</span>
+      <h2 class="section-title section-title-light">Events Worth the Drive</h2>
+      <p class="section-lead section-lead-light">Jackson County runs on community. These are the annual events that have been drawing people for generations.</p>
+    </div>
+    <div class="events-grid">
+      <div class="event-card">
+        <p class="event-month">July 2&ndash;5, 2026 &nbsp;&middot;&nbsp; Annual</p>
+        <h3 class="event-title">Independence Day Celebration</h3>
+        <p class="event-location">Ripley, WV &nbsp;&middot;&nbsp; Downtown &amp; Courthouse Lawn</p>
+        <p class="event-desc">America's Largest Small-Town Independence Day. Six days — a 200-unit parade, carnival rides, Firecracker 2-Miler, watermelon contest, and free concerts. 2026 performers: Darryl Worley, Bucky Covington, Johnny Staats Project. Population swells from 3,000 to 20,000.</p>
+        <span class="event-tag">Free Entry</span>
+        <a href="https://www.ripleyfourthofjuly.com" class="exp-card-link" target="_blank" rel="noopener" style="margin-top:1rem">Official site <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="event-card">
+        <p class="event-month">July 3&ndash;5, 2026 &nbsp;&middot;&nbsp; Annual</p>
+        <h3 class="event-title">Mountain State Art &amp; Craft Fair</h3>
+        <p class="event-location">Cedar Lakes Conference Center, Ripley</p>
+        <p class="event-desc">One of West Virginia's premier craft events during July 4th weekend. Regional artisans, folk art, handmade goods, and workshops. Founded as part of WV's 1963 Centennial — seventh decade running.</p>
+        <span class="event-tag">Cedar Lakes</span>
+        <a href="https://www.cedarlakes.com" class="exp-card-link" target="_blank" rel="noopener" style="margin-top:1rem">Details <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="event-card">
+        <p class="event-month">July 2026 &nbsp;&middot;&nbsp; Annual</p>
+        <h3 class="event-title">Jackson County Junior Fair</h3>
+        <p class="event-location">Jackson County Fairgrounds, Cottageville, WV</p>
+        <p class="event-desc">Youth projects, livestock competitions, carnival rides, local food, and community traditions. A cornerstone of Jackson County's farming heritage and one of the year's most family-friendly events.</p>
+        <span class="event-tag">Family Event</span>
+      </div>
+      <div class="event-card">
+        <p class="event-month">August 2026 &nbsp;&middot;&nbsp; Annual</p>
+        <h3 class="event-title">Ohio River Festival</h3>
+        <p class="event-location">Washington's Riverfront Park, Ravenswood</p>
+        <p class="event-desc">Three days at the Ohio River with major performers, fireworks by Premier Pyrotechnics, a crazy boat race, pet pageant, and carnival rides.</p>
+        <span class="event-tag">Riverfront Park</span>
+      </div>
+      <div class="event-card">
+        <p class="event-month">Fall 2026 &nbsp;&middot;&nbsp; Annual</p>
+        <h3 class="event-title">Harvest in the Wood</h3>
+        <p class="event-location">Downtown Ravenswood, WV</p>
+        <p class="event-desc">Ravenswood's beloved autumn festival. Local vendors, artisans, food, and fall color along the historic Washington Street corridor.</p>
+        <span class="event-tag">Downtown Ravenswood</span>
+      </div>
+      <div class="event-card">
+        <p class="event-month">November 2026 &nbsp;&middot;&nbsp; Annual</p>
+        <h3 class="event-title">Veterans Day Parade</h3>
+        <p class="event-location">Ripley, WV &nbsp;&middot;&nbsp; Jackson County Courthouse</p>
+        <p class="event-desc">Hundreds of photo posters of veterans and current service members lead a uniquely moving parade to a courthouse ceremony.</p>
+        <span class="event-tag">Free &amp; Open</span>
+      </div>
+    </div>
+    <div style="margin-top:2rem;text-align:center">
+      <a href="mailto:hello@discoverjacksoncountywv.com?subject=Event Submission" class="btn-ghost" style="font-size:.72rem">Submit an Event &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS — removed: previous quotes were not verifiable/attributable.
+     Before re-adding, use only real, permissioned reviews with full attribution
+     (or embed live Google/TripAdvisor reviews). Do not ship invented testimonials. -->
+
+<!-- PARTNER PRICING + BASIC DIRECTORY -->
+<section class="pricing-section reveal">
+  <div class="section-inner">
+    <div style="text-align:center;max-width:600px;margin:0 auto 3rem">
+      <span class="eyebrow eyebrow-light">Advertising Options</span>
+      <h2 class="section-title section-title-light">Two Ways to Be on This Site</h2>
+      <p class="section-lead section-lead-light" style="margin:0 auto">One puts your name in a list. One puts your story in front of every visitor who finds this guide.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <p class="pricing-tier">Basic Directory</p>
+        <p class="pricing-price">Free</p>
+        <p class="pricing-desc">Your name, category, and website link in our county directory. Factual entry only — no editorial copy, no cards, no top-of-page placement.</p>
+        <ul class="pricing-features">
+          <li>Name, category &amp; website link</li>
+          <li>Listed in county directory</li>
+          <li class="dim">Top-of-page feature card</li>
+          <li class="dim">Editorial description</li>
+          <li class="dim">Social media mentions</li>
+          <li class="dim">Click analytics</li>
+          <li class="dim">Featured Partner badge</li>
+        </ul>
+        <a href="mailto:hello@discoverjacksoncountywv.com?subject=Directory Listing Request" class="btn-ghost" style="display:block;text-align:center">Submit Your Listing</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-featured-badge">Recommended</div>
+        <p class="pricing-tier">Featured Partner</p>
+        <p class="pricing-price">$45<span>/month</span></p>
+        <p class="pricing-desc">A full showcase card at the top of the page — the first thing visitors read after the hero. Editorial copy we write for you.</p>
+        <ul class="pricing-features">
+          <li>Everything in Basic Directory</li>
+          <li>Top-of-page feature card</li>
+          <li>Photo-background showcase design</li>
+          <li>Editorial description we write</li>
+          <li>Social media mentions &amp; event cross-listing</li>
+          <li>Quarterly click analytics report</li>
+          <li>Featured Partner badge</li>
+        </ul>
+        <a href="mailto:hello@discoverjacksoncountywv.com?subject=Featured Partnership Inquiry" class="btn-gold" style="display:block;text-align:center">Become a Partner</a>
+      </div>
+      <div class="pricing-card">
+        <p class="pricing-tier">Premium Sponsor</p>
+        <p class="pricing-price" style="font-size:1.75rem">Contact Us</p>
+        <p class="pricing-desc">Category exclusivity, editorial features, and co-branded content. Coming soon — limited availability.</p>
+        <ul class="pricing-features">
+          <li>Everything in Featured</li>
+          <li>Category exclusivity</li>
+          <li>Editorial feature story</li>
+          <li>Co-branded content</li>
+          <li>Priority placement</li>
+          <li>Annual rate discount</li>
+        </ul>
+        <a href="mailto:hello@discoverjacksoncountywv.com?subject=Premium Sponsorship Inquiry" class="btn-ghost" style="display:block;text-align:center">Inquire</a>
+      </div>
+    </div>
+    <div class="pricing-stat-row">
+      <div><span class="pricing-stat-n" style="font-size:1.25rem;line-height:1.15">Hundreds of<br>thousands</span><span class="pricing-stat-l">Annual County Visitors</span></div>
+      <div><span class="pricing-stat-n">20K+</span><span class="pricing-stat-l">July 4th Visitors</span></div>
+      <div><span class="pricing-stat-n">$9.1B</span><span class="pricing-stat-l">WV Statewide Tourism Impact</span></div>
+      <div><span class="pricing-stat-n">45 mi</span><span class="pricing-stat-l">From 3 Major Markets</span></div>
+    </div>
+    <p style="text-align:center;max-width:640px;margin:1.5rem auto 0;font-size:.74rem;color:rgba(255,255,255,.4);line-height:1.7;font-weight:300">These figures describe Jackson County tourism and the regional market — not traffic to this site. Want our current site visitor numbers before you commit? <a href="mailto:hello@discoverjacksoncountywv.com?subject=Site Traffic Numbers Request" style="color:var(--gold-l)">Ask us and we'll share them.</a></p>
+
+    <div class="directory-section">
+      <div class="directory-header">
+        <p class="directory-title">County Business Directory — Free Listings</p>
+        <p class="directory-note">Name &amp; link only &nbsp;&middot;&nbsp; No editorial copy</p>
+      </div>
+      <p class="directory-subtext">Basic listings are reference entries: name, category, and website link. That's it. For a designed card, editorial description, and top-of-page placement — see Featured Partner above.</p>
+      <div class="directory-list">
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Cedar Lakes Conference Center</span><span class="directory-item-cat">Venue &amp; Lodging</span></div><a href="https://www.cedarlakes.com" class="directory-item-link" target="_blank">cedarlakes.com ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Great Bend Campground &amp; Marina</span><span class="directory-item-cat">Camping</span></div><a href="https://greatbendcampground.com" class="directory-item-link" target="_blank">Website ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">The Ravenswood Inn</span><span class="directory-item-cat">Bed &amp; Breakfast</span></div><a href="https://www.ravenswoodinn.com" class="directory-item-link" target="_blank">ravenswoodinn.com ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Statts Mills RV Park &amp; Cabins</span><span class="directory-item-cat">Camping &amp; Cabins</span></div><a href="http://www.stattsmillsrvpark.net" class="directory-item-link" target="_blank">Website ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Appalachian Distillery</span><span class="directory-item-cat">Distillery</span></div><a href="https://www.appalachiandistillery.com" class="directory-item-link" target="_blank" rel="noopener">appalachiandistillery.com ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Vail Furniture</span><span class="directory-item-cat">Furniture — Est. 1844</span></div></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">WV Artisan Market</span><span class="directory-item-cat">Artisan Goods &amp; Crafts</span></div></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Two Eighteen</span><span class="directory-item-cat">Women's Boutique</span></div></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Millcreek Trading Company</span><span class="directory-item-cat">Country Decor &amp; WV Gifts</span></div></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Jewelers Touch</span><span class="directory-item-cat">Jewelry &amp; Watches</span></div></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">The Downtowner</span><span class="directory-item-cat">Dining — American</span></div></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Las Trancas</span><span class="directory-item-cat">Dining — Mexican</span></div></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Roadhouse 2081</span><span class="directory-item-cat">Dining — Steaks &amp; Seafood</span></div></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Pete's Hot Dogs</span><span class="directory-item-cat">Dining — WV Hot Dogs</span></div></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Fairplain Yacht Club</span><span class="directory-item-cat">Dining — Creative American</span></div></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Samurai Hibachi &amp; Sushi</span><span class="directory-item-cat">Dining — Japanese</span></div></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Ripley CVB</span><span class="directory-item-cat">Visitor Information</span></div><a href="https://www.ripleycvb.com" class="directory-item-link" target="_blank">ripleycvb.com ↗</a></div>
+      </div>
+      <div class="directory-submit-row">
+        <p>To add your business to the free directory, email us with your name, category, and website.</p>
+        <a href="mailto:hello@discoverjacksoncountywv.com?subject=Directory Listing Request" class="btn-forest">Submit Your Listing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN YOUR TRIP -->
+<section class="section bg-river reveal" id="plan">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow eyebrow-light">Plan Your Visit</span>
+      <h2 class="section-title section-title-light">A Perfect Jackson County Weekend</h2>
+      <p class="section-lead section-lead-light">Two unhurried days from Columbus, Pittsburgh, or Charleston — about a 2.5-hour drive. Here's how to spend them.</p>
+    </div>
+
+    <div class="plan-block">
+      <div class="itin-grid">
+        <div class="itin-card">
+          <p class="itin-day">Day One</p>
+          <p class="itin-title">Ripley &amp; Cedar Lakes</p>
+          <ul class="itin-list">
+            <li><span class="itin-time">Morning</span><span>Arrive via I-77 Exit 138. Coffee and a walk around downtown Ripley, the kind of Main Street that earns its community-pride reputation.</span></li>
+            <li><span class="itin-time">Midday</span><span>Drive four miles to Cedar Lakes — 450 acres, four lakes, disc golf, trails, and the Staats Mill Covered Bridge. Pack a picnic or eat on the grounds.</span></li>
+            <li><span class="itin-time">Afternoon</span><span>Tour Appalachian Distillery for cornstalk-to-bottle moonshine and WV flavors — paw paw, blackberry, peach.</span></li>
+            <li><span class="itin-time">Evening</span><span>Dinner in Ripley — hand-cut steaks, WV hot dogs, or Mexican — then check in to your lodging.</span></li>
+          </ul>
+        </div>
+        <div class="itin-card">
+          <p class="itin-day">Day Two</p>
+          <p class="itin-title">Ravenswood &amp; the Ohio River</p>
+          <ul class="itin-list">
+            <li><span class="itin-time">Morning</span><span>Drive 11 miles north to Ravenswood. Hike or bike the Kevin Clegg Trail System at Eastwood Recreation Area — 13 miles, all skill levels.</span></li>
+            <li><span class="itin-time">Midday</span><span>Lunch downtown, then Washington's Riverfront Park on the Ohio River — boat launch, fishing, and wide-open river views.</span></li>
+            <li><span class="itin-time">Afternoon</span><span>Paddlers: put in on Mill Creek for part of the 20+ mile Ripley-to-Cottageville water trail. Or browse the local history museum.</span></li>
+            <li><span class="itin-time">Evening</span><span>Catch an Ohio River sunset before the drive home — or stay for whatever festival is on the calendar.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-block">
+      <h3 class="plan-subhead">Best Time to Visit</h3>
+      <p class="section-lead section-lead-light">There's a reason to come in every season — not just the Fourth of July.</p>
+      <div class="season-grid">
+        <div class="season-card"><p class="season-name">Spring</p><p class="season-desc">Quiet trails, rising creeks for paddling, and green hills before the summer crowds. The mildest weather for hiking.</p></div>
+        <div class="season-card"><p class="season-name">Summer</p><p class="season-desc">Peak season. The legendary July 2–5 Independence Day celebration, the Mountain State Art &amp; Craft Fair, and the August Ohio River Festival. Book lodging months ahead.</p></div>
+        <div class="season-card"><p class="season-name">Fall</p><p class="season-desc">Appalachian foliage, the Harvest in the Wood festival in Ravenswood, and the best photography light of the year along the river.</p></div>
+        <div class="season-card"><p class="season-name">Winter</p><p class="season-desc">The quiet off-season — distillery tastings, cozy small-town dining, and the moving Veterans Day Parade carrying into the holidays.</p></div>
+      </div>
+    </div>
+
+    <div class="plan-block" style="margin-bottom:0">
+      <h3 class="plan-subhead">Where to Stay</h3>
+      <p class="section-lead section-lead-light">From full-service conference lodging to Ohio River campsites, Jackson County has room for you.</p>
+    </div>
+    <div class="lodging-grid">
+      <div class="lodge-card">
+        <p class="lodge-type">Conference &amp; Event Lodging</p>
+        <p class="lodge-name">Cedar Lakes &mdash; Holt Lodge</p>
+        <p class="lodge-desc">Hotel-style accommodations on the Cedar Lakes grounds. 440 beds across 9 cottages plus Main and Mountaineer Lodges. Ideal for groups of 20 to 500.</p>
+        <p class="lodge-detail"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>82 FFA Drive, Ripley &nbsp;&middot;&nbsp; <a href="tel:+13043727860" style="color:var(--gold-l)">(304) 372-7860</a></p>
+        <p class="lodge-actions"><a href="https://www.cedarlakes.com" target="_blank" rel="noopener">Reserve ↗</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=82+FFA+Drive+Ripley+WV" target="_blank" rel="noopener">Get directions ↗</a></p>
+      </div>
+      <div class="lodge-card">
+        <p class="lodge-type">Bed &amp; Breakfast</p>
+        <p class="lodge-name">The Ravenswood Inn</p>
+        <p class="lodge-desc">A restored Late Victorian home with three rooms, cooked-to-order breakfast with WV ingredients, and walking distance to Washington's Riverfront Park. No online booking — call for reservations.</p>
+        <p class="lodge-detail"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>400 Walnut Street, Ravenswood &nbsp;&middot;&nbsp; <a href="tel:+13045327102" style="color:var(--gold-l)">(304) 532-7102</a></p>
+        <p class="lodge-actions"><a href="tel:+13045327102">Call to book ↗</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=400+Walnut+Street+Ravenswood+WV" target="_blank" rel="noopener">Get directions ↗</a></p>
+      </div>
+      <div class="lodge-card">
+        <p class="lodge-type">RV &amp; Tent Camping</p>
+        <p class="lodge-name">Great Bend Campground</p>
+        <p class="lodge-desc">Full hookup RV sites from $40/night, boat slips from $10/night. Direct Ohio River access. Within 45 miles of Cedar Lakes, Parkersburg, and Charleston.</p>
+        <p class="lodge-detail"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ravenswood, WV</p>
+        <p class="lodge-actions"><a href="https://greatbendcampground.com" target="_blank" rel="noopener">Reserve a site ↗</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Great+Bend+Campground+Ravenswood+WV" target="_blank" rel="noopener">Get directions ↗</a></p>
+      </div>
+      <div class="lodge-card">
+        <p class="lodge-type">Campground &amp; Cabins</p>
+        <p class="lodge-name">Statts Mills RV Park &amp; Cabins</p>
+        <p class="lodge-desc">Seven furnished, pet-friendly cabins and 15 full-hookup RV sites on 217-acre Lake O'Brien — 15 minutes off I-77. Kayaking, fishing, WiFi, and bathhouse on site.</p>
+        <p class="lodge-detail"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>5445 Statts Mills Rd, Ripley &nbsp;&middot;&nbsp; <a href="tel:+13043730030" style="color:var(--gold-l)">(304) 373-0030</a></p>
+        <p class="lodge-actions"><a href="http://www.stattsmillsrvpark.net" target="_blank" rel="noopener">Visit website ↗</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=5445+Statts+Mills+Rd+Ripley+WV" target="_blank" rel="noopener">Get directions ↗</a></p>
+      </div>
+      <div class="lodge-card">
+        <p class="lodge-type">Hotels &mdash; Ripley</p>
+        <p class="lodge-name">National Brands at Exit 138</p>
+        <p class="lodge-desc">Quality Inn from $64/night, Super 8 from $70/night, Holiday Inn Express from $122/night — all at Exit 138 on I-77. Free WiFi and breakfast included. Book 6+ months ahead for July 4th weekend.</p>
+        <p class="lodge-detail"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Book far ahead for July 4th — rooms sell out county-wide</p>
+        <p class="lodge-actions"><a href="https://www.google.com/travel/hotels/Ripley%20WV%20Exit%20138" target="_blank" rel="noopener">Compare hotels ↗</a></p>
+      </div>
+      <div class="lodge-card">
+        <p class="lodge-type">Getting Here</p>
+        <p class="lodge-name">Jackson County is Central</p>
+        <p class="lodge-desc">Ripley sits on I-77 between Charleston and Parkersburg. Under 90 minutes from Huntington WV and Athens OH. Columbus OH: ~2.5 hours. Pittsburgh: ~3 hours.</p>
+        <p class="lodge-detail"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8l4 1 3 4v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Exit 138 on I-77 &nbsp;&middot;&nbsp; Ripley, WV 25271</p>
+        <p class="lodge-actions"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=I-77+Exit+138+Ripley+WV+25271" target="_blank" rel="noopener">Get directions ↗</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">Discover <span>Jackson County, WV</span></p>
+        <p class="footer-about">An independent tourism guide serving visitors, locals, and day-trippers exploring Ripley, Ravenswood, and everything in between. Built by a local, for everyone.</p>
+        <p class="footer-tagline">Almost Heaven &nbsp;&middot;&nbsp; West Virginia</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Explore</p>
+        <ul class="footer-links">
+          <li><a href="#explore">Signature Experiences</a></li>
+          <li><a href="#explore-towns">Ripley</a></li>
+          <li><a href="#explore-towns">Ravenswood</a></li>
+          <li><a href="#events">Events Calendar</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Plan</p>
+        <ul class="footer-links">
+          <li><a href="#plan">Where to Stay</a></li>
+          <li><a href="#dining">Where to Eat</a></li>
+          <li><a href="#shopping">Shopping</a></li>
+          <li><a href="https://www.ripleycvb.com" target="_blank">Ripley CVB</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Partner</p>
+        <ul class="footer-links">
+          <li><a href="#partner">Featured Partners</a></li>
+          <li><a href="mailto:hello@discoverjacksoncountywv.com?subject=Featured Partnership Inquiry">Advertise Here</a></li>
+          <li><a href="mailto:hello@discoverjacksoncountywv.com?subject=Directory Listing Request">Submit Your Listing</a></li>
+          <li><a href="mailto:hello@discoverjacksoncountywv.com?subject=Event Submission">Submit an Event</a></li>
+          <li><a href="mailto:hello@discoverjacksoncountywv.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 <strong>Discover Jackson County WV</strong> &nbsp;&middot;&nbsp; An independent guide to Ripley &amp; Ravenswood, West Virginia</p>
+      <p class="footer-built">Built &amp; maintained locally &nbsp;&middot;&nbsp; Jackson County, WV</p>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Hide purely decorative inline SVGs from assistive tech
+document.querySelectorAll('svg').forEach(function(s){s.setAttribute('aria-hidden','true');s.setAttribute('focusable','false');});
+
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+  document.getElementById('backTop').classList.toggle('visible',window.scrollY>400);
+},{passive:true});
+function toggleMenu(){
+  var h=document.getElementById('hamburger');
+  h.classList.toggle('open');
+  document.getElementById('drawer').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+  var open=document.getElementById('drawer').classList.contains('open');
+  h.setAttribute('aria-expanded',open?'true':'false');
+  h.setAttribute('aria-label',open?'Close menu':'Open menu');
+  document.body.style.overflow=open?'hidden':'';
+}
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(r){io.observe(r);});
+function switchTab(town,btn){
+  document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('tab-'+town).classList.add('active');
+  btn.classList.add('active');
+}
+document.querySelectorAll('.cat-pill').forEach(function(p){
+  p.addEventListener('click',function(){
+    document.querySelectorAll('.cat-pill').forEach(function(x){x.classList.remove('active');});
+    p.classList.add('active');
+  });
+});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+function showMapFallback(){var m=document.getElementById('map');if(m)m.style.display='none';var f=document.getElementById('map-fallback');if(f)f.style.display='flex';}
+function initMap(){
+  try{
+    var map=L.map('map',{zoomControl:true,scrollWheelZoom:false}).setView([38.87,-81.70],11);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; OpenStreetMap &copy; CartoDB',maxZoom:19}).addTo(map);
+    function goldPin(label,sub){return L.divIcon({className:'',html:'<div style="background:#C4882A;color:#fff;padding:5px 9px;border-radius:2px;font-family:Outfit,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.05em;white-space:nowrap;box-shadow:0 2px 10px rgba(0,0,0,.5);line-height:1.3">'+label+'<br><span style="font-weight:300;font-size:10px;opacity:0.8">'+sub+'</span></div>',iconAnchor:[0,0]});}
+    L.marker([38.7943,-81.6890],{icon:goldPin('Cedar Lakes','450 acres · 4 lakes')}).addTo(map).bindPopup('<strong>Cedar Lakes Conference Center</strong>450 acres, 30 buildings, 4 lakes.');
+    L.marker([38.8217,-81.7113],{icon:goldPin('Ripley','County Seat')}).addTo(map).bindPopup('<strong>Ripley, WV</strong>Home of America\'s largest small-town Independence Day.');
+    L.marker([38.9465,-81.7654],{icon:goldPin('Ravenswood','Ohio River')}).addTo(map).bindPopup('<strong>Ravenswood, WV</strong>Kevin Clegg Trail System, Ohio River Festival, Great Bend Marina.');
+    L.marker([38.9560,-81.7810],{icon:goldPin('Great Bend','Campground & Marina')}).addTo(map).bindPopup('<strong>Great Bend Campground & Marina</strong>RV from $40/night, boat slips from $10/night.');
+  }catch(e){showMapFallback();}
+}
+(function(){
+  var mapEl=document.getElementById('map');
+  if(!mapEl)return;
+  var loaded=false;
+  function loadLeaflet(){
+    if(loaded)return;loaded=true;
+    var s=document.createElement('script');
+    s.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    s.onload=initMap;
+    s.onerror=showMapFallback;
+    document.body.appendChild(s);
+  }
+  if('IntersectionObserver' in window){
+    var mo=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){loadLeaflet();mo.disconnect();}});
+    },{rootMargin:'200px'});
+    mo.observe(mapEl);
+  }else{loadLeaflet();}
+})();
+(function(){
+  var el=document.getElementById('expScroll');
+  if(!el)return;
+  var isDown=false,startX,scrollLeft;
+  el.addEventListener('mousedown',function(e){isDown=true;startX=e.pageX-el.offsetLeft;scrollLeft=el.scrollLeft;});
+  el.addEventListener('mouseleave',function(){isDown=false;});
+  el.addEventListener('mouseup',function(){isDown=false;});
+  el.addEventListener('mousemove',function(e){if(!isDown)return;e.preventDefault();el.scrollLeft=scrollLeft-(e.pageX-el.offsetLeft-startX)*1.8;});
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TouristDestination",
+      "name": "Jackson County, West Virginia",
+      "description": "An independent guide to Ripley and Ravenswood, West Virginia — events, attractions, lodging, and local businesses.",
+      "url": "https://discoverjacksoncountywv.com/",
+      "image": "https://discoverjacksoncountywv.com/social-card.jpg",
+      "geo": { "@type": "GeoCoordinates", "latitude": 38.87, "longitude": -81.70 },
+      "containsPlace": [
+        { "@type": "City", "name": "Ripley, WV" },
+        { "@type": "City", "name": "Ravenswood, WV" }
+      ]
+    },
+    {
+      "@type": "Event",
+      "name": "Ripley Independence Day Celebration",
+      "description": "America's Largest Small-Town Independence Day — a six-day celebration with a 200-unit parade, carnival, Firecracker 2-Miler, and free concerts.",
+      "startDate": "2026-07-02",
+      "endDate": "2026-07-05",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "url": "https://www.ripleyfourthofjuly.com",
+      "location": { "@type": "Place", "name": "Downtown Ripley & Courthouse Lawn", "address": "Ripley, WV 25271" }
+    },
+    {
+      "@type": "Event",
+      "name": "Mountain State Art & Craft Fair",
+      "description": "One of West Virginia's premier craft events during July 4th weekend — regional artisans, folk art, handmade goods, and workshops.",
+      "startDate": "2026-07-03",
+      "endDate": "2026-07-05",
+      "url": "https://www.cedarlakes.com",
+      "location": { "@type": "Place", "name": "Cedar Lakes Conference Center", "address": "82 FFA Drive, Ripley, WV 25271" }
+    },
+    {
+      "@type": "Event",
+      "name": "Jackson County Junior Fair",
+      "description": "Youth projects, livestock competitions, carnival rides, and local food at the Jackson County Fairgrounds.",
+      "startDate": "2026-07",
+      "location": { "@type": "Place", "name": "Jackson County Fairgrounds", "address": "Cottageville, WV" }
+    },
+    {
+      "@type": "Event",
+      "name": "Ohio River Festival",
+      "description": "Three days on the Ohio River with major performers, fireworks, a crazy boat race, and carnival rides.",
+      "startDate": "2026-08",
+      "location": { "@type": "Place", "name": "Washington's Riverfront Park", "address": "Ravenswood, WV" }
+    },
+    {
+      "@type": "Event",
+      "name": "Harvest in the Wood",
+      "description": "Ravenswood's autumn festival — local vendors, artisans, food, and fall color along Washington Street.",
+      "startDate": "2026-10",
+      "location": { "@type": "Place", "name": "Downtown Ravenswood", "address": "Washington Street, Ravenswood, WV" }
+    },
+    {
+      "@type": "Event",
+      "name": "Veterans Day Parade",
+      "description": "A moving parade with photo posters of veterans leading to a courthouse ceremony.",
+      "startDate": "2026-11-11",
+      "location": { "@type": "Place", "name": "Jackson County Courthouse", "address": "Ripley, WV" }
+    },
+    {
+      "@type": "LodgingBusiness",
+      "name": "Cedar Lakes Conference Center",
+      "url": "https://www.cedarlakes.com",
+      "telephone": "+1-304-372-7860",
+      "address": { "@type": "PostalAddress", "streetAddress": "82 FFA Drive", "addressLocality": "Ripley", "addressRegion": "WV", "postalCode": "25271", "addressCountry": "US" }
+    },
+    {
+      "@type": "BedAndBreakfast",
+      "name": "The Ravenswood Inn",
+      "url": "https://www.ravenswoodinn.com",
+      "telephone": "+1-304-532-7102",
+      "address": { "@type": "PostalAddress", "streetAddress": "400 Walnut Street", "addressLocality": "Ravenswood", "addressRegion": "WV", "addressCountry": "US" }
+    },
+    {
+      "@type": "Campground",
+      "name": "Great Bend Campground & Marina",
+      "url": "https://greatbendcampground.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Ravenswood", "addressRegion": "WV", "addressCountry": "US" }
+    }
+  ]
+}
+</script>
+</body>
+</html>
