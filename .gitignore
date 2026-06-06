@@ -6,6 +6,7 @@
 !README.md
 !.gitignore
 !CNAME
+!social-card.png
 
 # Never publish internal/business material or editor folders
 .claude/
