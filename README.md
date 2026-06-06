@@ -1,8 +1,8 @@
-# Discover Jackson County WV
+# Visit Jackson County WV
 
 An independent editorial tourism guide to **Jackson County, West Virginia** — covering both **Ripley** (the county seat) and **Ravenswood** (on the Ohio River).
 
-🌐 **Live site:** https://discoverjacksoncountywv.com
+🌐 **Live site:** https://visitjacksoncountywv.com
 
 ## About
 
@@ -14,9 +14,10 @@ This is an independent project. It is not affiliated with any government agency,
 
 - Single self-contained `index.html` — all CSS and JavaScript inline
 - Fonts: [Fraunces](https://fonts.google.com/specimen/Fraunces) + [Outfit](https://fonts.google.com/specimen/Outfit) via Google Fonts
-- Interactive map: [Leaflet](https://leafletjs.com/) with CartoDB tiles (lazy-loaded)
+- Interactive map: [Leaflet](https://leafletjs.com/) with CartoDB tiles (lazy-loaded), category-filterable points & trails
 - Structured data: schema.org JSON-LD (TouristDestination, Event, LodgingBusiness)
-- No frameworks, no build step, no tracking networks
+- Analytics: Google Analytics 4
+- No frameworks, no build step, no ad networks
 
 ## Local development
 
@@ -29,8 +30,8 @@ python -m http.server 8000
 
 ## Deployment
 
-Hosted on **GitHub Pages** from the `main` branch. Pushing to `main` publishes the site. The custom domain is configured in the repository's **Settings → Pages**.
+Hosted on **GitHub Pages** from the `main` branch. Pushing to `main` publishes the site. The custom domain (`visitjacksoncountywv.com`) is set via the `CNAME` file and configured in **Settings → Pages**; DNS is managed at Porkbun.
 
 ## License
 
-© Discover Jackson County WV. All rights reserved.
+© Visit Jackson County WV. All rights reserved.

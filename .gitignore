@@ -5,6 +5,7 @@
 !index.html
 !README.md
 !.gitignore
+!CNAME
 
 # Never publish internal/business material or editor folders
 .claude/
