@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2KECJ7F6BP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2KECJ7F6BP');
+</script>
 <meta name="description" content="Discover Jackson County WV — an independent guide to Ripley and Ravenswood, West Virginia. Events, attractions, lodging, and local businesses.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0F1A12">
@@ -795,10 +803,25 @@ a{text-decoration:none;color:inherit}
 
       <p class="catref-town-label">Ravenswood</p>
       <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Steaming Cup Cafe</span><span class="catref-item-type">Coffee &amp; Caf&eacute;</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Santee Sweets</span><span class="catref-item-type">Bakery &amp; Sweets</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Las Fajitas Mexican-Grill</span><span class="catref-item-type">Mexican</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">The Dawg Pound</span><span class="catref-item-type">American</span></div>
+      </div>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Inaka Hibachi &amp; Sushi</span><span class="catref-item-type">Japanese</span></div>
+      </div>
+      <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">The Ravenswood Inn</span><span class="catref-item-type">Breakfast (B&amp;B guests)</span></div>
         <a href="https://www.ravenswoodinn.com" class="catref-item-link" target="_blank">ravenswoodinn.com ↗</a>
       </div>
-      <p class="catref-more">Ravenswood dining directory expanding as OnTRAC revitalization brings new openings — <a href="mailto:hello@discoverjacksoncountywv.com?subject=Dining Directory Request - Ravenswood" style="color:var(--gold-d)">submit your listing</a>.</p>
+      <p class="catref-more">Directory growing with Ravenswood's OnTRAC revitalization — <a href="mailto:hello@discoverjacksoncountywv.com?subject=Dining Directory Request - Ravenswood" style="color:var(--gold-d)">submit your listing</a>.</p>
     </div>
 
     <div class="catref-upgrade">
@@ -846,7 +869,10 @@ a{text-decoration:none;color:inherit}
       </div>
 
       <p class="catref-town-label">Ravenswood</p>
-      <p class="catref-more">Ravenswood shopping expanding as OnTRAC revitalization brings new businesses to Washington Street — <a href="mailto:hello@discoverjacksoncountywv.com?subject=Shopping Directory Request - Ravenswood" style="color:var(--gold-d)">submit your listing</a>.</p>
+      <div class="catref-item">
+        <div class="catref-item-left"><span class="catref-item-name">Mountain Mama Marketplace</span><span class="catref-item-type">Boutique &middot; Oils &middot; Greenhouse</span></div>
+      </div>
+      <p class="catref-more">More Ravenswood shops opening on Washington Street with OnTRAC revitalization — <a href="mailto:hello@discoverjacksoncountywv.com?subject=Shopping Directory Request - Ravenswood" style="color:var(--gold-d)">submit your listing</a>.</p>
 
       <p class="catref-town-label" style="margin-top:1.5rem">Full Directory</p>
       <div class="catref-item">
@@ -901,11 +927,12 @@ a{text-decoration:none;color:inherit}
         <span class="event-tag">Family Event</span>
       </div>
       <div class="event-card">
-        <p class="event-month">August 2026 &nbsp;&middot;&nbsp; Annual</p>
+        <p class="event-month">July 31 &ndash; Aug 2, 2026 &nbsp;&middot;&nbsp; Annual</p>
         <h3 class="event-title">Ohio River Festival</h3>
         <p class="event-location">Washington's Riverfront Park, Ravenswood</p>
-        <p class="event-desc">Three days at the Ohio River with major performers, fireworks by Premier Pyrotechnics, a crazy boat race, pet pageant, and carnival rides.</p>
-        <span class="event-tag">Riverfront Park</span>
+        <p class="event-desc">Three days on the Ohio River — live bands, food trucks, craft vendors, a crazy boat race, pet pageant, carnival rides, and fireworks. Free admission and free riverfront parking.</p>
+        <span class="event-tag">Free Admission</span>
+        <a href="https://www.cityofravenswood.com/ohio-river-festival" class="exp-card-link" target="_blank" rel="noopener" style="margin-top:1rem">Schedule <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       </div>
       <div class="event-card">
         <p class="event-month">Fall 2026 &nbsp;&middot;&nbsp; Annual</p>
@@ -1174,6 +1201,21 @@ a{text-decoration:none;color:inherit}
 <script>
 // Hide purely decorative inline SVGs from assistive tech
 document.querySelectorAll('svg').forEach(function(s){s.setAttribute('aria-hidden','true');s.setAttribute('focusable','false');});
+
+// GA4 outbound + contact click tracking (powers Featured Partner click analytics)
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a');
+  if(!a||typeof gtag!=='function')return;
+  var href=a.getAttribute('href')||'';
+  var text=(a.textContent||'').trim().slice(0,100);
+  if(/^https?:/i.test(href)&&a.host!==location.host){
+    gtag('event','outbound_click',{link_url:href,link_text:text});
+  }else if(/^mailto:/i.test(href)){
+    gtag('event','contact_click',{method:'email',link_url:href});
+  }else if(/^tel:/i.test(href)){
+    gtag('event','contact_click',{method:'phone',link_url:href});
+  }
+},true);
 
 window.addEventListener('scroll',function(){
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
