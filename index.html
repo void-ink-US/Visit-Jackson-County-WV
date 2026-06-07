@@ -295,6 +295,11 @@ a{text-decoration:none;color:inherit}
 .testi-name{font-size:.8rem;font-weight:600;color:var(--text);display:block}
 .testi-from{font-size:.72rem;color:var(--text-l);font-weight:300;display:block}
 .testi-mark{position:absolute;top:1.5rem;right:1.75rem;font-family:var(--ff-d);font-size:4rem;color:rgba(196,136,42,.12);line-height:1;font-style:italic}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.review-link{display:flex;flex-direction:column;gap:.6rem;background:var(--cream);border:1px solid var(--cream-dd);border-radius:4px;padding:1.5rem;transition:box-shadow .2s,transform .2s,border-color .2s}
+.review-link:hover{box-shadow:0 6px 24px rgba(0,0,0,.08);transform:translateY(-2px);border-color:var(--gold)}
+.review-name{font-family:var(--ff-d);font-size:1.05rem;font-weight:600;color:var(--text);line-height:1.2}
+.review-cta{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-d)}
 
 /* ── PRICING + DIRECTORY ─────────────────────────*/
 .pricing-section{background:var(--forest-d);padding:5.5rem 2rem;position:relative;overflow:hidden}
@@ -464,7 +469,7 @@ a{text-decoration:none;color:inherit}
       <a href="#plan" class="btn-ghost">Plan Your Visit</a>
     </div>
     <div class="hero-stats">
-      <div><span class="hero-stat-n">500K</span><span class="hero-stat-l">Annual Visitors</span></div>
+      <div><span class="hero-stat-n">500K</span><span class="hero-stat-l">Cedar Lakes Visitors/yr</span></div>
       <div><span class="hero-stat-n">150+</span><span class="hero-stat-l">Years of Heritage</span></div>
       <div><span class="hero-stat-n">20 mi</span><span class="hero-stat-l">Water Trail</span></div>
       <div><span class="hero-stat-n">2 Towns</span><span class="hero-stat-l">One County</span></div>
@@ -501,12 +506,12 @@ a{text-decoration:none;color:inherit}
     <div class="partners-header">
       <div>
         <span class="eyebrow eyebrow-light">Featured Partners</span>
-        <h2 class="section-title section-title-light">Places We Recommend</h2>
-        <p class="section-lead section-lead-light">A curated selection of Jackson County businesses worth your time — editorially reviewed, not just listed.</p>
+        <h2 class="section-title section-title-light">Featured Local Partners</h2>
+        <p class="section-lead section-lead-light">Hand-picked Jackson County businesses we're glad to send visitors to. Featured Partnerships are paid placements that keep this guide independent and free to read — and we only feature places we'd genuinely recommend.</p>
       </div>
       <div class="partners-slots">
         <span class="slots-dot"></span>
-        <span style="margin-left:.1rem">Now welcoming local partners</span>
+        <span style="margin-left:.1rem">A few featured placements — about one per category</span>
       </div>
     </div>
     <div class="partner-cards">
@@ -555,7 +560,7 @@ a{text-decoration:none;color:inherit}
           <p class="slot-label">Now accepting partners</p>
           <p class="slot-title">Your Business Here</p>
           <p style="font-size:.82rem;color:rgba(255,255,255,.38);line-height:1.72;font-weight:300;margin-top:.5rem">A featured card at the top of this page — the first thing every visitor reads about Jackson County businesses.</p>
-          <p class="slot-price">$45 / month &nbsp;&middot;&nbsp; Cancel anytime &nbsp;&middot;&nbsp; No long-term contract</p>
+          <p class="slot-price">$50 / month &nbsp;&middot;&nbsp; Cancel anytime &nbsp;&middot;&nbsp; No long-term contract</p>
           <p style="font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.7;font-weight:300;margin-top:.6rem">No setup fee &middot; We write your copy and you approve it before it goes live &middot; Card live within 5 business days &middot; Cancel any time and your card comes down at the end of the month.</p>
         </div>
         <div class="slot-right">
@@ -793,42 +798,53 @@ a{text-decoration:none;color:inherit}
       <p class="catref-town-label">Ripley</p>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">The Downtowner</span><span class="catref-item-type">American Comfort</span></div>
+        <a href="https://www.google.com/search?q=The+Downtowner+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Las Trancas</span><span class="catref-item-type">Mexican</span></div>
+        <a href="https://www.google.com/search?q=Las+Trancas+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Roadhouse 2081</span><span class="catref-item-type">Steaks &amp; Seafood</span></div>
+        <a href="https://www.google.com/search?q=Roadhouse+2081+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Pete's Hot Dogs</span><span class="catref-item-type">WV Hot Dogs</span></div>
+        <a href="https://www.google.com/search?q=Petes+Hot+Dogs+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Fairplain Yacht Club</span><span class="catref-item-type">Creative American</span></div>
+        <a href="https://www.google.com/search?q=Fairplain+Yacht+Club+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Samurai Hibachi &amp; Sushi</span><span class="catref-item-type">Japanese</span></div>
+        <a href="https://www.google.com/search?q=Samurai+Hibachi+Sushi+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
 
       <p class="catref-town-label">Ravenswood</p>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Steaming Cup Cafe</span><span class="catref-item-type">Coffee &amp; Caf&eacute;</span></div>
+        <a href="https://www.google.com/search?q=Steaming+Cup+Cafe+Ravenswood+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Santee Sweets</span><span class="catref-item-type">Bakery &amp; Sweets</span></div>
+        <a href="https://www.google.com/search?q=Santee+Sweets+Ravenswood+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Las Fajitas Mexican-Grill</span><span class="catref-item-type">Mexican</span></div>
+        <a href="https://www.google.com/search?q=Las+Fajitas+Mexican+Grill+Ravenswood+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">The Dawg Pound</span><span class="catref-item-type">American</span></div>
+        <a href="https://www.google.com/search?q=The+Dawg+Pound+Ravenswood+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Inaka Hibachi &amp; Sushi</span><span class="catref-item-type">Japanese</span></div>
+        <a href="https://www.google.com/search?q=Inaka+Hibachi+Sushi+Ravenswood+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">The Ravenswood Inn</span><span class="catref-item-type">Breakfast (B&amp;B guests)</span></div>
-        <a href="https://www.ravenswoodinn.com" class="catref-item-link" target="_blank">ravenswoodinn.com ↗</a>
+        <a href="https://www.ravenswoodinn.com" class="catref-item-link" target="_blank" rel="noopener">ravenswoodinn.com ↗</a>
       </div>
       <p class="catref-more">Directory growing with Ravenswood's OnTRAC revitalization — <a href="mailto:hello@visitjacksoncountywv.com?subject=Dining Directory Request - Ravenswood" style="color:var(--gold-d)">submit your listing</a>.</p>
     </div>
@@ -852,7 +868,7 @@ a{text-decoration:none;color:inherit}
     <div class="section-head">
       <span class="eyebrow">Where to Shop</span>
       <h2 class="section-title">Shopping in Jackson County</h2>
-      <p class="section-lead">Independent local shops in Ripley and Ravenswood. For the full Ripley business directory, see <a href="https://shopripleywv.com" target="_blank" style="color:var(--gold-d);font-weight:600">shopripleywv.com</a>.</p>
+      <p class="section-lead">Independent local shops in Ripley and Ravenswood — boutiques, artisan goods, country décor, and the kind of finds you won't get from a chain.</p>
     </div>
 
     <div class="catref-intro">
@@ -863,31 +879,31 @@ a{text-decoration:none;color:inherit}
       <p class="catref-town-label">Ripley</p>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Vail Furniture</span><span class="catref-item-type">Furniture &amp; Home — Est. 1844</span></div>
+        <a href="https://www.google.com/search?q=Vail+Furniture+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">WV Artisan Market</span><span class="catref-item-type">Artisan Goods &amp; Crafts</span></div>
+        <a href="https://www.google.com/search?q=WV+Artisan+Market+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Two Eighteen</span><span class="catref-item-type">Women's Boutique</span></div>
+        <a href="https://www.google.com/search?q=Two+Eighteen+boutique+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Millcreek Trading Company</span><span class="catref-item-type">Country Decor &amp; WV Gifts</span></div>
+        <a href="https://www.google.com/search?q=Millcreek+Trading+Company+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Jewelers Touch</span><span class="catref-item-type">Jewelry &amp; Watches</span></div>
+        <a href="https://www.google.com/search?q=Jewelers+Touch+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
 
       <p class="catref-town-label">Ravenswood</p>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Mountain Momma Marketplace</span><span class="catref-item-type">Boutique &middot; Oils &middot; Greenhouse</span></div>
+        <a href="https://www.google.com/search?q=Mountain+Momma+Marketplace+Ravenswood+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <p class="catref-more">More Ravenswood shops opening on Washington Street with OnTRAC revitalization — <a href="mailto:hello@visitjacksoncountywv.com?subject=Shopping Directory Request - Ravenswood" style="color:var(--gold-d)">submit your listing</a>.</p>
-
-      <p class="catref-town-label" style="margin-top:1.5rem">Full Directory</p>
-      <div class="catref-item">
-        <div class="catref-item-left"><span class="catref-item-name">Shop Ripley WV</span><span class="catref-item-type">Comprehensive Local Business Directory</span></div>
-        <a href="https://shopripleywv.com" class="catref-item-link" target="_blank">shopripleywv.com ↗</a>
-      </div>
     </div>
 
     <div class="catref-upgrade">
@@ -964,9 +980,22 @@ a{text-decoration:none;color:inherit}
   </div>
 </section>
 
-<!-- TESTIMONIALS — removed: previous quotes were not verifiable/attributable.
-     Before re-adding, use only real, permissioned reviews with full attribution
-     (or embed live Google/TripAdvisor reviews). Do not ship invented testimonials. -->
+<!-- VISITOR REVIEWS — links to real Google reviews; no fabricated quotes -->
+<section class="section bg-white reveal">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="eyebrow">Visitor Reviews</span>
+      <h2 class="section-title">Don't Take Our Word for It</h2>
+      <p class="section-lead">We don't post our own testimonials. Read real, unfiltered reviews from people who've actually made the trip.</p>
+    </div>
+    <div class="reviews-grid">
+      <a class="review-link" href="https://www.google.com/search?q=Cedar+Lakes+Conference+Center+Ripley+WV+reviews" target="_blank" rel="noopener"><span class="review-name">Cedar Lakes Conference Center</span><span class="review-cta">Read Google reviews ↗</span></a>
+      <a class="review-link" href="https://www.google.com/search?q=Appalachian+Distillery+Ripley+WV+reviews" target="_blank" rel="noopener"><span class="review-name">Appalachian Distillery</span><span class="review-cta">Read Google reviews ↗</span></a>
+      <a class="review-link" href="https://www.google.com/search?q=Great+Bend+Campground+Ravenswood+WV+reviews" target="_blank" rel="noopener"><span class="review-name">Great Bend Campground</span><span class="review-cta">Read Google reviews ↗</span></a>
+      <a class="review-link" href="https://www.google.com/search?q=The+Ravenswood+Inn+Ravenswood+WV+reviews" target="_blank" rel="noopener"><span class="review-name">The Ravenswood Inn</span><span class="review-cta">Read Google reviews ↗</span></a>
+    </div>
+  </div>
+</section>
 
 <!-- PARTNER PRICING + BASIC DIRECTORY -->
 <section class="pricing-section reveal">
@@ -980,9 +1009,9 @@ a{text-decoration:none;color:inherit}
       <div class="pricing-card">
         <p class="pricing-tier">Basic Directory</p>
         <p class="pricing-price">Free</p>
-        <p class="pricing-desc">Your name, category, and website link in our county directory. Factual entry only — no editorial copy, no cards, no top-of-page placement.</p>
+        <p class="pricing-desc">Your name, category, and a search link in our county directory. Factual entry only — no editorial copy, no cards, no top-of-page placement.</p>
         <ul class="pricing-features">
-          <li>Name, category &amp; website link</li>
+          <li>Name, category &amp; search link</li>
           <li>Listed in county directory</li>
           <li class="dim">Top-of-page feature card</li>
           <li class="dim">Editorial description</li>
@@ -995,10 +1024,11 @@ a{text-decoration:none;color:inherit}
       <div class="pricing-card featured">
         <div class="pricing-featured-badge">Recommended</div>
         <p class="pricing-tier">Featured Partner</p>
-        <p class="pricing-price">$45<span>/month</span></p>
+        <p class="pricing-price">$50<span>/month</span></p>
         <p class="pricing-desc">A full showcase card at the top of the page — the first thing visitors read after the hero. Editorial copy we write for you.</p>
         <ul class="pricing-features">
           <li>Everything in Basic Directory</li>
+          <li>Direct link to your website</li>
           <li>Top-of-page feature card</li>
           <li>Photo-background showcase design</li>
           <li>Editorial description we write</li>
@@ -1010,8 +1040,8 @@ a{text-decoration:none;color:inherit}
       </div>
       <div class="pricing-card">
         <p class="pricing-tier">Premium Sponsor</p>
-        <p class="pricing-price" style="font-size:1.75rem">Contact Us</p>
-        <p class="pricing-desc">Category exclusivity, editorial features, and co-branded content. Coming soon — limited availability.</p>
+        <p class="pricing-price">$150<span>/month</span></p>
+        <p class="pricing-desc">Category exclusivity, an editorial feature story, and co-branded content. By application — limited availability.</p>
         <ul class="pricing-features">
           <li>Everything in Featured</li>
           <li>Category exclusivity</li>
@@ -1023,6 +1053,7 @@ a{text-decoration:none;color:inherit}
         <a href="mailto:hello@visitjacksoncountywv.com?subject=Premium Sponsorship Inquiry" class="btn-ghost" style="display:block;text-align:center">Inquire</a>
       </div>
     </div>
+    <p style="text-align:center;max-width:680px;margin:1.75rem auto 0;font-size:.74rem;color:rgba(255,255,255,.42);line-height:1.7;font-weight:300"><strong style="color:rgba(255,255,255,.6);font-weight:600">Partner terms:</strong> Billed monthly, cancel anytime — your card comes down at the end of the month and your free directory listing stays. We write your copy and you approve it before launch (one refresh per quarter included). No setup fee, no long-term contract.</p>
     <div class="pricing-stat-row">
       <div><span class="pricing-stat-n" style="font-size:1.25rem;line-height:1.15">Hundreds of<br>thousands</span><span class="pricing-stat-l">Annual County Visitors</span></div>
       <div><span class="pricing-stat-n">20K+</span><span class="pricing-stat-l">July 4th Visitors</span></div>
@@ -1034,34 +1065,34 @@ a{text-decoration:none;color:inherit}
     <div class="directory-section">
       <div class="directory-header">
         <p class="directory-title">County Business Directory — Free Listings</p>
-        <p class="directory-note">Name &amp; link only &nbsp;&middot;&nbsp; No editorial copy</p>
+        <p class="directory-note">Name &amp; search link only &nbsp;&middot;&nbsp; No editorial copy</p>
       </div>
-      <p class="directory-subtext">Basic listings are reference entries: name, category, and website link. That's it. For a designed card, editorial description, and top-of-page placement — see Featured Partner above.</p>
+      <p class="directory-subtext">Basic listings are reference entries: name, category, and a search link so visitors can find you. That's it. For a designed card, editorial description, a direct website link, and top-of-page placement — see Featured Partner above.</p>
       <div class="directory-list">
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Cedar Lakes Conference Center</span><span class="directory-item-cat">Venue &amp; Lodging</span></div><a href="https://www.cedarlakes.com" class="directory-item-link" target="_blank">cedarlakes.com ↗</a></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Great Bend Campground &amp; Marina</span><span class="directory-item-cat">Camping</span></div><a href="https://greatbendcampground.com" class="directory-item-link" target="_blank">Website ↗</a></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">The Ravenswood Inn</span><span class="directory-item-cat">Bed &amp; Breakfast</span></div><a href="https://www.ravenswoodinn.com" class="directory-item-link" target="_blank">ravenswoodinn.com ↗</a></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Statts Mills RV Park &amp; Cabins</span><span class="directory-item-cat">Camping &amp; Cabins</span></div><a href="http://www.stattsmillsrvpark.net" class="directory-item-link" target="_blank">Website ↗</a></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Appalachian Distillery</span><span class="directory-item-cat">Distillery</span></div><a href="https://www.appalachian-moonshine.com" class="directory-item-link" target="_blank" rel="noopener">appalachian-moonshine.com ↗</a></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Vail Furniture</span><span class="directory-item-cat">Furniture — Est. 1844</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">WV Artisan Market</span><span class="directory-item-cat">Artisan Goods &amp; Crafts</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Two Eighteen</span><span class="directory-item-cat">Women's Boutique</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Millcreek Trading Company</span><span class="directory-item-cat">Country Decor &amp; WV Gifts</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Jewelers Touch</span><span class="directory-item-cat">Jewelry &amp; Watches</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">The Downtowner</span><span class="directory-item-cat">Dining — American</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Las Trancas</span><span class="directory-item-cat">Dining — Mexican</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Roadhouse 2081</span><span class="directory-item-cat">Dining — Steaks &amp; Seafood</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Pete's Hot Dogs</span><span class="directory-item-cat">Dining — WV Hot Dogs</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Fairplain Yacht Club</span><span class="directory-item-cat">Dining — Creative American</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Samurai Hibachi &amp; Sushi</span><span class="directory-item-cat">Dining — Japanese</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Ripley CVB</span><span class="directory-item-cat">Visitor Information</span></div><a href="https://www.ripleycvb.com" class="directory-item-link" target="_blank">ripleycvb.com ↗</a></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Steaming Cup Cafe</span><span class="directory-item-cat">Ravenswood — Coffee &amp; Café</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Santee Sweets</span><span class="directory-item-cat">Ravenswood — Bakery</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Las Fajitas Mexican-Grill</span><span class="directory-item-cat">Ravenswood — Mexican</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">The Dawg Pound</span><span class="directory-item-cat">Ravenswood — American</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Inaka Hibachi &amp; Sushi</span><span class="directory-item-cat">Ravenswood — Japanese</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Mountain Momma Marketplace</span><span class="directory-item-cat">Ravenswood — Boutique &amp; Gifts</span></div></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Downtown Ravenswood Partners</span><span class="directory-item-cat">Visitor Information</span></div><a href="https://www.downtownravenswood.org" class="directory-item-link" target="_blank">downtownravenswood.org ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Cedar Lakes Conference Center</span><span class="directory-item-cat">Venue &amp; Lodging</span></div><a href="https://www.google.com/search?q=Cedar+Lakes+Conference+Center+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Great Bend Campground &amp; Marina</span><span class="directory-item-cat">Camping</span></div><a href="https://www.google.com/search?q=Great+Bend+Campground+Ravenswood+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">The Ravenswood Inn</span><span class="directory-item-cat">Bed &amp; Breakfast</span></div><a href="https://www.google.com/search?q=The+Ravenswood+Inn+Ravenswood+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Statts Mills RV Park &amp; Cabins</span><span class="directory-item-cat">Camping &amp; Cabins</span></div><a href="https://www.google.com/search?q=Statts+Mills+RV+Park+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Appalachian Distillery</span><span class="directory-item-cat">Distillery</span></div><a href="https://www.google.com/search?q=Appalachian+Distillery+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Vail Furniture</span><span class="directory-item-cat">Furniture — Est. 1844</span></div><a href="https://www.google.com/search?q=Vail+Furniture+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">WV Artisan Market</span><span class="directory-item-cat">Artisan Goods &amp; Crafts</span></div><a href="https://www.google.com/search?q=WV+Artisan+Market+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Two Eighteen</span><span class="directory-item-cat">Women's Boutique</span></div><a href="https://www.google.com/search?q=Two+Eighteen+boutique+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Millcreek Trading Company</span><span class="directory-item-cat">Country Decor &amp; WV Gifts</span></div><a href="https://www.google.com/search?q=Millcreek+Trading+Company+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Jewelers Touch</span><span class="directory-item-cat">Jewelry &amp; Watches</span></div><a href="https://www.google.com/search?q=Jewelers+Touch+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">The Downtowner</span><span class="directory-item-cat">Dining — American</span></div><a href="https://www.google.com/search?q=The+Downtowner+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Las Trancas</span><span class="directory-item-cat">Dining — Mexican</span></div><a href="https://www.google.com/search?q=Las+Trancas+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Roadhouse 2081</span><span class="directory-item-cat">Dining — Steaks &amp; Seafood</span></div><a href="https://www.google.com/search?q=Roadhouse+2081+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Pete's Hot Dogs</span><span class="directory-item-cat">Dining — WV Hot Dogs</span></div><a href="https://www.google.com/search?q=Petes+Hot+Dogs+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Fairplain Yacht Club</span><span class="directory-item-cat">Dining — Creative American</span></div><a href="https://www.google.com/search?q=Fairplain+Yacht+Club+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Samurai Hibachi &amp; Sushi</span><span class="directory-item-cat">Dining — Japanese</span></div><a href="https://www.google.com/search?q=Samurai+Hibachi+Sushi+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Ripley CVB</span><span class="directory-item-cat">Visitor Information</span></div><a href="https://www.ripleycvb.com" class="directory-item-link" target="_blank" rel="noopener">ripleycvb.com ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Steaming Cup Cafe</span><span class="directory-item-cat">Ravenswood — Coffee &amp; Café</span></div><a href="https://www.google.com/search?q=Steaming+Cup+Cafe+Ravenswood+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Santee Sweets</span><span class="directory-item-cat">Ravenswood — Bakery</span></div><a href="https://www.google.com/search?q=Santee+Sweets+Ravenswood+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Las Fajitas Mexican-Grill</span><span class="directory-item-cat">Ravenswood — Mexican</span></div><a href="https://www.google.com/search?q=Las+Fajitas+Mexican+Grill+Ravenswood+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">The Dawg Pound</span><span class="directory-item-cat">Ravenswood — American</span></div><a href="https://www.google.com/search?q=The+Dawg+Pound+Ravenswood+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Inaka Hibachi &amp; Sushi</span><span class="directory-item-cat">Ravenswood — Japanese</span></div><a href="https://www.google.com/search?q=Inaka+Hibachi+Sushi+Ravenswood+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Mountain Momma Marketplace</span><span class="directory-item-cat">Ravenswood — Boutique &amp; Gifts</span></div><a href="https://www.google.com/search?q=Mountain+Momma+Marketplace+Ravenswood+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Downtown Ravenswood Partners</span><span class="directory-item-cat">Visitor Information</span></div><a href="https://www.downtownravenswood.org" class="directory-item-link" target="_blank" rel="noopener">downtownravenswood.org ↗</a></div>
       </div>
       <div class="directory-submit-row">
         <p>To add your business to the free directory, email us with your name, category, and website.</p>
@@ -1088,7 +1119,7 @@ a{text-decoration:none;color:inherit}
           <ul class="itin-list">
             <li><span class="itin-time">Morning</span><span>Arrive via I-77 Exit 138. Coffee and a walk around downtown Ripley, the kind of Main Street that earns its community-pride reputation.</span></li>
             <li><span class="itin-time">Midday</span><span>Drive four miles to Cedar Lakes — 450 acres, four lakes, disc golf, trails, and the Staats Mill Covered Bridge. Pack a picnic or eat on the grounds.</span></li>
-            <li><span class="itin-time">Afternoon</span><span>Tour Appalachian Distillery for cornstalk-to-bottle moonshine and WV flavors — paw paw, blackberry, peach.</span></li>
+            <li><span class="itin-time">Afternoon</span><span>Tour Appalachian Distillery for cornstalk-to-bottle moonshine and WV flavors — paw paw, blackberry, peach. Open daily (Sun 1–6pm); $5 tours.</span></li>
             <li><span class="itin-time">Evening</span><span>Dinner in Ripley — hand-cut steaks, WV hot dogs, or Mexican — then check in to your lodging.</span></li>
           </ul>
         </div>
@@ -1098,7 +1129,7 @@ a{text-decoration:none;color:inherit}
           <ul class="itin-list">
             <li><span class="itin-time">Morning</span><span>Drive 11 miles north to Ravenswood. Hike or bike the Kevin Clegg Trail System at Eastwood Recreation Area — 13 miles, all skill levels.</span></li>
             <li><span class="itin-time">Midday</span><span>Lunch downtown, then Washington's Riverfront Park on the Ohio River — boat launch, fishing, and wide-open river views.</span></li>
-            <li><span class="itin-time">Afternoon</span><span>Paddlers: put in on Mill Creek for part of the 20+ mile Ripley-to-Cottageville water trail. Or browse the local history museum.</span></li>
+            <li><span class="itin-time">Afternoon</span><span>Paddlers: put in on Mill Creek for part of the 20+ mile Ripley-to-Cottageville water trail. Or browse the Great Bend Museum (Tue–Sat 12–4pm, free).</span></li>
             <li><span class="itin-time">Evening</span><span>Catch an Ohio River sunset before the drive home — or stay for whatever festival is on the calendar.</span></li>
           </ul>
         </div>
@@ -1152,7 +1183,7 @@ a{text-decoration:none;color:inherit}
       <div class="lodge-card">
         <p class="lodge-type">Hotels &mdash; Ripley</p>
         <p class="lodge-name">National Brands at Exit 138</p>
-        <p class="lodge-desc">Quality Inn from $64/night, Super 8 from $70/night, Holiday Inn Express from $122/night — all at Exit 138 on I-77. Free WiFi and breakfast included. Book 6+ months ahead for July 4th weekend.</p>
+        <p class="lodge-desc">Quality Inn, Super 8, and Holiday Inn Express — all at Exit 138 on I-77, roughly $60–$125/night (as of 2026). Free WiFi and breakfast included. Book 6+ months ahead for July 4th weekend.</p>
         <p class="lodge-detail"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Book far ahead for July 4th — rooms sell out county-wide</p>
         <p class="lodge-actions"><a href="https://www.google.com/travel/hotels/Ripley%20WV%20Exit%20138" target="_blank" rel="noopener">Compare hotels ↗</a></p>
       </div>
@@ -1207,7 +1238,7 @@ a{text-decoration:none;color:inherit}
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">&copy; 2026 <strong>Visit Jackson County WV</strong> &nbsp;&middot;&nbsp; An independent guide to Ripley &amp; Ravenswood, West Virginia</p>
-      <p class="footer-built">Built &amp; maintained locally &nbsp;&middot;&nbsp; Jackson County, WV</p>
+      <p class="footer-built">Built &amp; maintained locally &nbsp;&middot;&nbsp; Content verified June 2026</p>
     </div>
   </div>
 </footer>
@@ -1295,7 +1326,7 @@ var POIS=[
   {n:"Samurai Hibachi & Sushi",c:"dining",lat:38.8240,lng:-81.7140,d:"Japanese — Ripley."},
   {n:"Roadhouse 2081",c:"dining",lat:38.8160,lng:-81.7180,d:"Steaks & seafood — Ripley."},
   {n:"Fairplain Yacht Club",c:"dining",lat:38.8330,lng:-81.7220,d:"Creative American — Fairplain."},
-  {n:"Appalachian Distillery",c:"dining",lat:38.8060,lng:-81.6850,d:"Craft moonshine, tastings & tours — 3875 Cedar Lakes Dr."},
+  {n:"Appalachian Distillery",c:"dining",lat:38.8060,lng:-81.6850,d:"Craft moonshine, tastings & $5 tours — 3875 Cedar Lakes Dr. Open daily (Sun 1–6)."},
   // Shops — Ripley
   {n:"Vail Furniture",c:"shops",lat:38.8214,lng:-81.7101,d:"Furniture & home — est. 1844."},
   {n:"WV Artisan Market",c:"shops",lat:38.8208,lng:-81.7103,d:"100+ local artisans."},
@@ -1311,7 +1342,7 @@ var POIS=[
   {n:"Hotels at Exit 138",c:"stay",lat:38.8430,lng:-81.7330,d:"Quality Inn, Super 8, Holiday Inn Express — I-77."},
   // Arts & history
   {n:"Alpine Theatre",c:"arts",lat:38.8214,lng:-81.7112,d:"Historic Main Street theatre since 1936 — film & live performance."},
-  {n:"Great Bend Museum",c:"arts",lat:38.9503,lng:-81.7645,d:"Native American & local history; free. At Riverfront Park."},
+  {n:"Great Bend Museum",c:"arts",lat:38.9503,lng:-81.7645,d:"Native American & local history; free. Riverfront Park. Tue–Sat 12–4."},
   {n:"Staats Mill Covered Bridge",c:"arts",lat:38.7960,lng:-81.6878,d:"1887 covered bridge, 97 ft — at Cedar Lakes."},
   {n:"Jackson County Fairgrounds",c:"arts",lat:38.8662,lng:-81.7968,d:"Jr. Fair & community events — Cottageville."}
 ];
@@ -1338,7 +1369,7 @@ function initMap(){
       var color=CATS[p.c]||'#C4882A',isTown=p.c==='town';
       var m=L.circleMarker([p.lat,p.lng],{radius:isTown?8:6,weight:1.5,color:'#0F1A12',fillColor:color,fillOpacity:.95});
       m.bindTooltip(p.n,{direction:'top',offset:[0,-4]});
-      m.bindPopup('<strong>'+p.n+'</strong>'+(p.d||''));
+      m.bindPopup('<strong>'+p.n+'</strong>'+(p.d||'')+'<br><a href="https://www.google.com/maps/dir/?api=1&destination='+p.lat+','+p.lng+'" target="_blank" rel="noopener" style="color:#D4A44E;font-weight:600">Directions ↗</a>');
       m.addTo(map);
       MAP.layers.push({cat:p.c,layer:m});
       pts.push([p.lat,p.lng]);
