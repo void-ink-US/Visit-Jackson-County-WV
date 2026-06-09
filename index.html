@@ -1310,48 +1310,60 @@ var CATS={town:'#D4A44E',outdoors:'#3a6035',dining:'#C4882A',shops:'#2B4B6E',sta
 // Ripley/Ravenswood clusters, trailheads, and Statts Mills are best-effort
 // approximate — refine lat/lng here anytime.
 var POIS=[
+  // Town anchors
   {n:"Ripley",c:"town",lat:38.8217,lng:-81.7106,d:"County seat — home of America's largest small-town Independence Day."},
   {n:"Ravenswood",c:"town",lat:38.9462,lng:-81.7607,d:"Ohio River town — riverfront park, trails, and a reviving downtown."},
-  // Outdoors & trails
+  // Outdoors
   {n:"Washington's Riverfront Park",c:"outdoors",lat:38.9505,lng:-81.7650,d:"Ohio River park: boat launch, fishing, walking trail, event stage."},
-  {n:"Kevin Clegg Trail System",c:"outdoors",lat:38.9525,lng:-81.7395,d:"Eastwood Recreation Area — 9 trails, 13 miles. Hike, bike, run."},
+  {n:"Kevin Clegg Trail System",c:"outdoors",lat:38.9525,lng:-81.7395,d:"Eastwood Recreation Area — 9+ miles of hiking & biking trails."},
   {n:"Ripley City Park",c:"outdoors",lat:38.8192,lng:-81.7150,d:"Pool & water slide, skate park, tennis, playground."},
-  // Dining & drink — Ravenswood
-  {n:"Steaming Cup Cafe",c:"dining",lat:38.9489,lng:-81.7616,d:"Coffee & café — 138 Washington St."},
-  {n:"Santee Sweets",c:"dining",lat:38.9487,lng:-81.7613,d:"Bakery & sweets — 138 Washington St."},
-  {n:"Las Fajitas Mexican-Grill",c:"dining",lat:38.9480,lng:-81.7609,d:"Mexican — 205 Washington St."},
-  {n:"Inaka Hibachi & Sushi",c:"dining",lat:38.9491,lng:-81.7618,d:"Japanese — 100 Washington St."},
-  {n:"The Dawg Pound",c:"dining",lat:38.9456,lng:-81.7589,d:"American — 1125 Walnut St."},
-  // Dining & drink — Ripley
-  {n:"The Downtowner",c:"dining",lat:38.8211,lng:-81.7108,d:"American comfort — downtown Ripley."},
-  {n:"Las Trancas",c:"dining",lat:38.8206,lng:-81.7096,d:"Mexican — Ripley."},
+  {n:"Rivertown Adventures",c:"outdoors",lat:38.9484,lng:-81.7609,d:"Outdoor recreation outfitter — 205 Washington St, Ravenswood."},
+  // Dining — Ravenswood
+  {n:"Steaming Cup Cafe",c:"dining",lat:38.9475,lng:-81.7610,d:"Coffee & café — 128 Washington St."},
+  {n:"Santee Sweets",c:"dining",lat:38.9476,lng:-81.7609,d:"Bakery & sweets — 138 Washington St."},
+  {n:"Las Fajitas Mexican-Grill",c:"dining",lat:38.9483,lng:-81.7611,d:"Mexican — 205 Washington St."},
+  {n:"Inaka Hibachi & Sushi",c:"dining",lat:38.9473,lng:-81.7609,d:"Japanese — 100 Washington St."},
+  {n:"The Dawg Pound",c:"dining",lat:38.9480,lng:-81.7615,d:"American — 1125 Walnut St."},
+  // Dining — Ripley
+  {n:"The Downtowner",c:"dining",lat:38.8211,lng:-81.7108,d:"American comfort food — downtown Ripley."},
+  {n:"Las Trancas",c:"dining",lat:38.8208,lng:-81.7227,d:"Mexican — 157 McGraw St."},
   {n:"Pete's Hot Dogs",c:"dining",lat:38.8226,lng:-81.7122,d:"WV-style hot dogs — Ripley."},
   {n:"Samurai Hibachi & Sushi",c:"dining",lat:38.8240,lng:-81.7140,d:"Japanese — Ripley."},
-  {n:"Roadhouse 2081",c:"dining",lat:38.8160,lng:-81.7180,d:"Steaks & seafood — Ripley."},
-  {n:"Fairplain Yacht Club",c:"dining",lat:38.8330,lng:-81.7220,d:"Creative American — Fairplain."},
-  {n:"Appalachian Distillery",c:"dining",lat:38.8060,lng:-81.6850,d:"Craft moonshine, tastings & $5 tours — 3875 Cedar Lakes Dr. Open daily (Sun 1–6)."},
+  {n:"Roadhouse 2081",c:"dining",lat:38.8217,lng:-81.7286,d:"Steaks & seafood — 150 Clay Lick Rd."},
+  {n:"Cozumel Mexican Restaurant",c:"dining",lat:38.8205,lng:-81.7286,d:"Mexican — 250 Clay Lick Rd."},
+  {n:"Fat Albert Pizza",c:"dining",lat:38.8196,lng:-81.7115,d:"Pizza — 123 N Court St."},
+  {n:"Cake Land Bakery",c:"dining",lat:38.8187,lng:-81.7119,d:"Custom cakes & bakery — 107 S Court St."},
+  {n:"That Donut Place",c:"dining",lat:38.8151,lng:-81.7096,d:"Donuts — 234 S Church St."},
+  {n:"Fairplain Yacht Club",c:"dining",lat:38.8070,lng:-81.6983,d:"Creative American — 3869 Cedar Lakes Dr."},
+  {n:"Appalachian Distillery",c:"dining",lat:38.8068,lng:-81.6979,d:"Craft moonshine, tastings & $5 tours — 3875 Cedar Lakes Dr."},
   // Shops — Ripley
-  {n:"Vail Furniture",c:"shops",lat:38.8214,lng:-81.7101,d:"Furniture & home — est. 1844."},
-  {n:"WV Artisan Market",c:"shops",lat:38.8208,lng:-81.7103,d:"100+ local artisans."},
-  {n:"Two Eighteen",c:"shops",lat:38.8212,lng:-81.7098,d:"Women's boutique."},
-  {n:"Millcreek Trading Company",c:"shops",lat:38.8216,lng:-81.7095,d:"Country décor & WV gifts."},
-  {n:"Jewelers Touch",c:"shops",lat:38.8209,lng:-81.7107,d:"Jewelry & watches."},
-  {n:"Mountain Momma Marketplace",c:"shops",lat:38.9483,lng:-81.7611,d:"Boutique, essential oils & greenhouse — Ravenswood."},
+  {n:"Vail Furniture",c:"shops",lat:38.8275,lng:-81.7057,d:"Furniture & home — est. 1844. 103 N Church St."},
+  {n:"WV Artisan Market",c:"shops",lat:38.8208,lng:-81.7103,d:"100+ local artisans — downtown Ripley."},
+  {n:"Two Eighteen",c:"shops",lat:38.8212,lng:-81.7098,d:"Women's boutique — downtown Ripley."},
+  {n:"Millcreek Trading Company",c:"shops",lat:38.8216,lng:-81.7095,d:"Country décor & WV gifts — downtown Ripley."},
+  {n:"Jewelers Touch",c:"shops",lat:38.8192,lng:-81.7114,d:"Jewelry & watches — 111 N Court St."},
+  {n:"Left Behind Vintage",c:"shops",lat:38.8154,lng:-81.7099,d:"Vintage & antiques — 228 S Church St."},
+  {n:"Beyond Bargains",c:"shops",lat:38.8183,lng:-81.7104,d:"Boutique — 109 S Church St."},
+  {n:"Studio 109",c:"shops",lat:38.8120,lng:-81.7062,d:"Custom & personalized apparel — 332 S Church St."},
+  {n:"Goldiggers",c:"shops",lat:38.8121,lng:-81.7063,d:"Jewelry & accessories — 328 S Church St."},
+  // Shops — Ravenswood
+  {n:"Mountain Momma Marketplace",c:"shops",lat:38.9534,lng:-81.7651,d:"Boutique & gifts — 508 Washington St."},
+  {n:"Riverbend Antiques & Craft Mall",c:"shops",lat:38.9485,lng:-81.7612,d:"Antiques & crafts — 219 Washington St."},
+  {n:"Ravenswood Floral and Gifts",c:"shops",lat:38.9533,lng:-81.7648,d:"Flowers & gifts — 512 Washington St."},
   // Stay
   {n:"Cedar Lakes — Holt Lodge",c:"stay",lat:38.7948,lng:-81.6889,d:"440 beds; conference & event lodging. 82 FFA Drive."},
   {n:"The Ravenswood Inn",c:"stay",lat:38.9468,lng:-81.7600,d:"Victorian B&B, 3 rooms — 400 Walnut St."},
-  {n:"Great Bend Campground & Marina",c:"stay",lat:38.9540,lng:-81.7635,d:"RV, tents & boat slips on the Ohio River, Ravenswood."},
+  {n:"Great Bend Campground & Marina",c:"stay",lat:38.9540,lng:-81.7635,d:"RV, tents & boat slips on the Ohio River."},
   {n:"Statts Mills RV Park & Cabins",c:"stay",lat:38.7770,lng:-81.6230,d:"Cabins & RV on 217-acre Lake O'Brien."},
   {n:"Hotels at Exit 138",c:"stay",lat:38.8430,lng:-81.7330,d:"Quality Inn, Super 8, Holiday Inn Express — I-77."},
-  // Arts & history
-  {n:"Alpine Theatre",c:"arts",lat:38.8214,lng:-81.7112,d:"Historic Main Street theatre since 1936 — film & live performance."},
-  {n:"Great Bend Museum",c:"arts",lat:38.9503,lng:-81.7645,d:"Native American & local history; free. Riverfront Park. Tue–Sat 12–4."},
+  // Arts & History
+  {n:"Alpine Theatre",c:"arts",lat:38.8188,lng:-81.7121,d:"Historic Main Street theatre since 1936 — 210 W Main St."},
+  {n:"Great Bend Museum",c:"arts",lat:38.9481,lng:-81.7608,d:"Native American & local history; free. Tue–Sat 12–4."},
   {n:"Staats Mill Covered Bridge",c:"arts",lat:38.7960,lng:-81.6878,d:"1887 covered bridge, 97 ft — at Cedar Lakes."},
-  {n:"Jackson County Fairgrounds",c:"arts",lat:38.8662,lng:-81.7968,d:"Jr. Fair & community events — Cottageville."}
+  {n:"Jackson County Fairgrounds",c:"arts",lat:38.8662,lng:-81.7968,d:"Jr. Fair & community events — Cottageville."},
+  {n:"Ravenswood Arts LLC",c:"arts",lat:38.9485,lng:-81.7617,d:"Local art gallery & creative space — 224 Washington St."}
 ];
-var TRAILS=[
-  {n:"Mill Creek Water Trail",c:"outdoors",d:"20+ mile paddle, Ripley to Cottageville.",coords:[[38.8217,-81.7106],[38.8320,-81.7260],[38.8450,-81.7450],[38.8570,-81.7750],[38.8662,-81.7968]]}
-];
+var TRAILS=[];
 var MAP={map:null,layers:[],ready:false,filter:'all'};
 function mapFilter(cat){
   MAP.filter=cat||'all';
@@ -1372,22 +1384,64 @@ function initMap(){
       var color=CATS[p.c]||'#C4882A',isTown=p.c==='town';
       var m=L.circleMarker([p.lat,p.lng],{radius:isTown?8:6,weight:1.5,color:'#0F1A12',fillColor:color,fillOpacity:.95});
       m.bindTooltip(p.n,{direction:'top',offset:[0,-4]});
-      m.bindPopup('<strong>'+p.n+'</strong>'+(p.d||'')+'<br><a href="https://www.google.com/maps/dir/?api=1&destination='+p.lat+','+p.lng+'" target="_blank" rel="noopener" style="color:#D4A44E;font-weight:600">Directions ↗</a>');
+      m.bindPopup('<strong>'+p.n+'</strong>'+(p.d?'<br><small>'+p.d+'</small>':'')+'<br><a href="https://www.google.com/maps/dir/?api=1&destination='+p.lat+','+p.lng+'" target="_blank" rel="noopener" style="color:#D4A44E;font-weight:600">Directions ↗</a>');
       m.addTo(map);
       MAP.layers.push({cat:p.c,layer:m});
       pts.push([p.lat,p.lng]);
     });
-    TRAILS.forEach(function(t){
-      var pl=L.polyline(t.coords,{color:CATS[t.c]||'#3a6035',weight:3,opacity:.85,dashArray:'6 7'});
-      pl.bindTooltip(t.n,{sticky:true});
-      pl.bindPopup('<strong>'+t.n+'</strong>'+(t.d||''));
-      pl.addTo(map);
-      MAP.layers.push({cat:t.c,layer:pl});
-      t.coords.forEach(function(c){pts.push(c);});
-    });
     map.fitBounds(L.latLngBounds(pts).pad(0.12));
     MAP.ready=true;
     mapFilter(MAP.filter);
+    // Async GeoJSON layers
+    function addGeoLayer(url,styleFn,popupFn,tipFn,cat,alwaysOn){
+      fetch(url).then(function(r){return r.json();}).then(function(data){
+        var gl=L.geoJSON(data,{
+          style:styleFn,
+          onEachFeature:function(f,l){
+            if(popupFn)l.bindPopup(popupFn(f));
+            if(tipFn)l.bindTooltip(tipFn(f),{sticky:true,direction:'top'});
+          }
+        });
+        if(alwaysOn){gl.addTo(map);return;}
+        MAP.layers.push({cat:cat,layer:gl});
+        if(MAP.filter==='all'||MAP.filter===cat)gl.addTo(map);
+      }).catch(function(){});
+    }
+    // Town boundaries — always-on gold dashed outline
+    addGeoLayer('jackson_boundaries.geojson',
+      {color:'#D4A44E',weight:1.5,fillOpacity:0,dashArray:'5 5',opacity:0.45},
+      function(f){return '<strong>'+(f.properties.NAMELSAD||'')+'</strong>';},
+      function(f){return f.properties.NAMELSAD||'';},
+      null,true
+    );
+    // City & county parks — outdoors category, semi-transparent fill
+    addGeoLayer('jackson_parks.geojson',
+      {color:'#3a6035',weight:1.5,fillColor:'#3a6035',fillOpacity:0.25},
+      function(f){var p=f.properties;return '<strong>'+(p.Unit_Nm||'Park')+'</strong>'+(p.GIS_Acres?'<br><small>'+p.GIS_Acres+' acres</small>':'');},
+      function(f){return f.properties.Unit_Nm||'Park';},
+      'outdoors',false
+    );
+    // Trail network — color-coded by use type
+    addGeoLayer('jackson_trails.geojson',
+      function(f){
+        var p=f.properties;
+        if(p.water==='Yes')return{color:'#2B4B6E',weight:3,opacity:.9};
+        if(p.bike==='Yes')return{color:'#D4A44E',weight:2,opacity:.8};
+        if(p.trailSyste&&p.trailSyste.indexOf('Clegg')>-1)return{color:'#A87020',weight:2,opacity:.8};
+        return{color:'#3a6035',weight:2,opacity:.75};
+      },
+      function(f){
+        var p=f.properties,types=[];
+        if(p.hike==='Yes')types.push('Hike');
+        if(p.bike==='Yes')types.push('Bike');
+        if(p.water==='Yes')types.push('Paddle');
+        return '<strong>'+(p.trailName||'Trail')+'</strong>'
+          +(p.trailSyste&&p.trailSyste!==''?'<br><small>'+p.trailSyste+'</small>':'')
+          +(p.trailLengt?'<br><small>'+parseFloat(p.trailLengt).toFixed(1)+' mi'+(types.length?' &middot; '+types.join(' / '):'')+'</small>':'');
+      },
+      function(f){return f.properties.trailName||'Trail';},
+      'outdoors',false
+    );
   }catch(e){showMapFallback();}
 }
 (function(){
