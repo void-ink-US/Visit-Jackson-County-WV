@@ -172,14 +172,15 @@ a{text-decoration:none;color:inherit}
 .partner-card-body{background:rgba(15,26,18,.96);padding:2.25rem;display:flex;flex-direction:column;justify-content:space-between;border:1px solid rgba(196,136,42,.2);border-left:none;position:relative}
 .partner-card-body::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:2px;background:linear-gradient(180deg,transparent,var(--gold),transparent)}
 .partner-badge{font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;display:flex;align-items:center;gap:.35rem}
-.partner-badge::before{content:'★';font-size:.48rem}
+.partner-badge::before{content:'';width:24px;height:1px;background:var(--gold)}
 .partner-name{font-family:var(--ff-d);font-size:clamp(1.35rem,3vw,2rem);font-weight:700;color:var(--white);line-height:1.05;letter-spacing:-.02em;margin-bottom:.4rem}
+.partner-dek{font-family:var(--ff-d);font-style:italic;font-weight:300;font-size:.95rem;color:var(--gold-l);line-height:1.45;margin-bottom:.55rem}
 .partner-cat{font-size:.63rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem}
 .partner-desc{font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.72;font-weight:300;flex:1;margin-bottom:1.25rem}
 .partner-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-l);transition:gap .2s}
 .partner-link:hover{gap:.8rem}
 .partner-link svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.partner-slot{border:1.5px dashed rgba(196,136,42,.28);border-radius:4px;padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;background:rgba(196,136,42,.03);transition:border-color .2s}
+.partner-slot{border:1px solid rgba(196,136,42,.28);border-radius:4px;padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;background:rgba(196,136,42,.03);transition:border-color .2s}
 .partner-slot:hover{border-color:rgba(196,136,42,.55)}
 .slot-label{font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:.5rem}
 .slot-title{font-family:var(--ff-d);font-style:italic;font-size:1.5rem;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:.4rem}
@@ -518,12 +519,13 @@ a{text-decoration:none;color:inherit}
     </div>
     <div class="partner-cards">
 
-      <div class="partner-card">
+      <div class="partner-card" id="partner-cedar-lakes">
         <div class="partner-card-visual bg-cedar grain"></div>
         <div class="partner-card-body">
           <div>
-            <p class="partner-badge">Featured Partner</p>
+            <p class="partner-badge">Founding Partner &middot; N&ordm; 01 &middot; Since 2026</p>
             <p class="partner-name">Cedar Lakes Conference Center</p>
+            <p class="partner-dek">Four lakes, 450 acres, and generations of West Virginia summers.</p>
             <p class="partner-cat">Event Venue &amp; Lodging &nbsp;&middot;&nbsp; Ripley, WV</p>
             <p class="partner-desc">West Virginia's most-visited venue — 450 acres with four lakes, 30 buildings, and overnight lodging for groups of 20 to 500. Home of the Mountain State Art &amp; Craft Fair and the 1887 Staats Mill Covered Bridge. Open year-round for conferences, weddings, youth camps, disc golf, and hiking. Four miles from downtown Ripley.</p>
           </div>
@@ -531,12 +533,13 @@ a{text-decoration:none;color:inherit}
         </div>
       </div>
 
-      <div class="partner-card">
+      <div class="partner-card" id="partner-appalachian-distillery">
         <div class="partner-card-visual bg-gold-dark grain"></div>
         <div class="partner-card-body">
           <div>
-            <p class="partner-badge">Featured Partner</p>
+            <p class="partner-badge">Founding Partner &middot; N&ordm; 02 &middot; Since 2026</p>
             <p class="partner-name">Appalachian Distillery</p>
+            <p class="partner-dek">Cornstalk to bottle, nothing in between.</p>
             <p class="partner-cat">Distillery &amp; Tasting Room &nbsp;&middot;&nbsp; Ripley, WV</p>
             <p class="partner-desc">Craft moonshine produced from the cornstalk to the bottle in Ripley, WV. Traditional white lightning alongside signature WV flavors — paw paw, blackberry, peach, and strawberry lemonade. One of the most distinctive and unexpected stops in the region.</p>
           </div>
@@ -544,12 +547,13 @@ a{text-decoration:none;color:inherit}
         </div>
       </div>
 
-      <div class="partner-card">
+      <div class="partner-card" id="partner-great-bend">
         <div class="partner-card-visual bg-river grain"></div>
         <div class="partner-card-body">
           <div>
-            <p class="partner-badge">Featured Partner</p>
+            <p class="partner-badge">Founding Partner &middot; N&ordm; 03 &middot; Since 2026</p>
             <p class="partner-name">Great Bend Campground &amp; Marina</p>
+            <p class="partner-dek">Sleep where the river bends.</p>
             <p class="partner-cat">Camping &amp; Marina &nbsp;&middot;&nbsp; Ravenswood, WV</p>
             <p class="partner-desc">Ravenswood's Ohio River base camp. Full hookup RV sites from $40/night, boat slips from $10/night, and direct access to the river at Washington's Riverfront Park. Within 45 miles of Cedar Lakes, Parkersburg, and Charleston — the ideal staging point for the whole region.</p>
           </div>
@@ -559,14 +563,14 @@ a{text-decoration:none;color:inherit}
 
       <div class="partner-slot">
         <div>
-          <p class="slot-label">Now accepting partners</p>
-          <p class="slot-title">Your Business Here</p>
-          <p style="font-size:.82rem;color:rgba(255,255,255,.38);line-height:1.72;font-weight:300;margin-top:.5rem">A featured card at the top of this page — the first thing every visitor reads about Jackson County businesses.</p>
+          <p class="slot-label">By invitation &amp; application</p>
+          <p class="slot-title">The next name on this page</p>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.38);line-height:1.72;font-weight:300;margin-top:.5rem">Every business on this page was chosen before it was charged. If we'd send visitors to you anyway, there may be a seat open in your category.</p>
           <p class="slot-price">$50 / month &nbsp;&middot;&nbsp; Cancel anytime &nbsp;&middot;&nbsp; No long-term contract</p>
-          <p style="font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.7;font-weight:300;margin-top:.6rem">No setup fee &middot; We write your copy and you approve it before it goes live &middot; Card live within 5 business days &middot; Cancel any time and your card comes down at the end of the month.</p>
+          <p style="font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.7;font-weight:300;margin-top:.6rem">No setup fee &middot; We write your copy and you approve it before it goes live &middot; Card live within 5 business days &middot; Founding Partner rates available through 2026.</p>
         </div>
         <div class="slot-right">
-          <p>Featured partners get a full editorial description we write for you, a photo-background showcase card, event cross-listing, and quarterly click analytics. Your business name doesn't just appear — it gets remembered.</p>
+          <p>Featured partners get a full editorial description we write for you, a photo-background showcase card, a gold partner pin with a direct link on the interactive county map, starred listings across the guide, event cross-listing, and a live click-analytics dashboard. Your business name doesn't just appear — it gets remembered.</p>
           <a href="mailto:hello@visitjacksoncountywv.com?subject=Featured Partnership Inquiry" class="btn-gold">Become a Partner</a>
         </div>
       </div>
@@ -831,8 +835,8 @@ a{text-decoration:none;color:inherit}
         <a href="https://www.google.com/search?q=Fairplain+Yacht+Club+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <div class="catref-item">
-        <div class="catref-item-left"><span class="catref-item-name">Appalachian Distillery</span><span class="catref-item-type">Craft Moonshine &amp; Tastings</span></div>
-        <a href="https://www.google.com/search?q=Appalachian+Distillery+Ripley+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
+        <div class="catref-item-left"><span class="catref-item-name"><span style="color:var(--gold-d)">★</span> Appalachian Distillery</span><span class="catref-item-type">Craft Moonshine &amp; Tastings</span></div>
+        <a href="https://www.appalachian-moonshine.com" class="catref-item-link" target="_blank" rel="noopener">appalachian-moonshine.com ↗</a>
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">Osaka Sushi, Thai &amp; Steakhouse</span><span class="catref-item-type">Japanese, Thai &amp; Steaks</span></div>
@@ -862,7 +866,7 @@ a{text-decoration:none;color:inherit}
       </div>
       <div class="catref-item">
         <div class="catref-item-left"><span class="catref-item-name">The Ravenswood Inn</span><span class="catref-item-type">Breakfast (B&amp;B guests)</span></div>
-        <a href="https://www.ravenswoodinn.com" class="catref-item-link" target="_blank" rel="noopener">ravenswoodinn.com ↗</a>
+        <a href="https://www.google.com/search?q=The+Ravenswood+Inn+Ravenswood+WV" class="catref-item-link" target="_blank" rel="noopener">Find ↗</a>
       </div>
       <p class="catref-more">Directory growing with Ravenswood's OnTRAC revitalization — <a href="mailto:hello@visitjacksoncountywv.com?subject=Dining Directory Request - Ravenswood" style="color:var(--gold-d)">submit your listing</a>.</p>
     </div>
@@ -1052,7 +1056,7 @@ a{text-decoration:none;color:inherit}
           <li>Listed in county directory</li>
           <li class="dim">Top-of-page feature card</li>
           <li class="dim">Editorial description</li>
-          <li class="dim">Social media mentions</li>
+          <li class="dim">Gold ★ pin on the county map</li>
           <li class="dim">Click analytics</li>
           <li class="dim">Featured Partner badge</li>
         </ul>
@@ -1064,13 +1068,14 @@ a{text-decoration:none;color:inherit}
         <p class="pricing-price">$50<span>/month</span></p>
         <p class="pricing-desc">A full showcase card at the top of the page — the first thing visitors read after the hero. Editorial copy we write for you.</p>
         <ul class="pricing-features">
-          <li>Everything in Basic Directory</li>
-          <li>Direct link to your website</li>
+          <li>Your directory listing, plus:</li>
           <li>Top-of-page feature card</li>
+          <li>Gold ★ pin &amp; direct link on the county map</li>
+          <li>Starred listing &amp; direct website links across the guide</li>
           <li>Photo-background showcase design</li>
           <li>Editorial description we write</li>
-          <li>Social media mentions &amp; event cross-listing</li>
-          <li>Quarterly click analytics report</li>
+          <li>Event cross-listing</li>
+          <li>Live click-analytics dashboard</li>
           <li>Featured Partner badge</li>
         </ul>
         <a href="mailto:hello@visitjacksoncountywv.com?subject=Featured Partnership Inquiry" class="btn-gold" style="display:block;text-align:center">Become a Partner</a>
@@ -1090,7 +1095,7 @@ a{text-decoration:none;color:inherit}
         <a href="mailto:hello@visitjacksoncountywv.com?subject=Premium Sponsorship Inquiry" class="btn-ghost" style="display:block;text-align:center">Inquire</a>
       </div>
     </div>
-    <p style="text-align:center;max-width:680px;margin:1.75rem auto 0;font-size:.74rem;color:rgba(255,255,255,.42);line-height:1.7;font-weight:300"><strong style="color:rgba(255,255,255,.6);font-weight:600">Partner terms:</strong> Billed monthly, cancel anytime — your card comes down at the end of the month and your free directory listing stays. We write your copy and you approve it before launch (one refresh per quarter included). No setup fee, no long-term contract.</p>
+    <p style="text-align:center;max-width:680px;margin:1.75rem auto 0;font-size:.74rem;color:rgba(255,255,255,.42);line-height:1.7;font-weight:300"><strong style="color:rgba(255,255,255,.6);font-weight:600">Partner terms:</strong> Billed monthly, cancel anytime — your card comes down at the end of the month and your free directory listing stays. Annual partnership available: $500, invoiced once each June. 2026 Founding Partners lock their rate for life while continuously active — your price never increases. We write your copy and you approve it before launch (copy refresh included at your annual partner review). No setup fee, no long-term contract.</p>
     <div class="pricing-stat-row">
       <div><span class="pricing-stat-n" style="font-size:1.25rem;line-height:1.15">Hundreds of<br>thousands</span><span class="pricing-stat-l">Annual County Visitors</span></div>
       <div><span class="pricing-stat-n">20K+</span><span class="pricing-stat-l">July 4th Visitors</span></div>
@@ -1104,13 +1109,13 @@ a{text-decoration:none;color:inherit}
         <p class="directory-title">County Business Directory — Free Listings</p>
         <p class="directory-note">Name &amp; search link only &nbsp;&middot;&nbsp; No editorial copy</p>
       </div>
-      <p class="directory-subtext">Basic listings are reference entries: name, category, and a search link so visitors can find you. That's it. For a designed card, editorial description, a direct website link, and top-of-page placement — see Featured Partner above.</p>
+      <p class="directory-subtext">Basic listings are reference entries: name, category, and a search link so visitors can find you. That's it. For a designed card, editorial description, a direct website link, and top-of-page placement — see Featured Partner above. Entries marked <span style="color:var(--gold-l)">★</span> are Featured Partners; civic and visitor organizations are linked directly as a public service.</p>
       <div class="directory-list">
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Cedar Lakes Conference Center</span><span class="directory-item-cat">Venue &amp; Lodging</span></div><a href="https://www.google.com/search?q=Cedar+Lakes+Conference+Center+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Great Bend Campground &amp; Marina</span><span class="directory-item-cat">Camping</span></div><a href="https://www.google.com/search?q=Great+Bend+Campground+Ravenswood+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name"><span style="color:var(--gold-l)">★</span> Cedar Lakes Conference Center</span><span class="directory-item-cat">Venue &amp; Lodging</span></div><a href="https://www.cedarlakes.com" class="directory-item-link" target="_blank" rel="noopener">cedarlakes.com ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name"><span style="color:var(--gold-l)">★</span> Great Bend Campground &amp; Marina</span><span class="directory-item-cat">Camping</span></div><a href="https://greatbendcampground.com" class="directory-item-link" target="_blank" rel="noopener">greatbendcampground.com ↗</a></div>
         <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">The Ravenswood Inn</span><span class="directory-item-cat">Bed &amp; Breakfast</span></div><a href="https://www.google.com/search?q=The+Ravenswood+Inn+Ravenswood+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
         <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Statts Mills RV Park &amp; Cabins</span><span class="directory-item-cat">Camping &amp; Cabins</span></div><a href="https://www.google.com/search?q=Statts+Mills+RV+Park+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
-        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Appalachian Distillery</span><span class="directory-item-cat">Distillery</span></div><a href="https://www.google.com/search?q=Appalachian+Distillery+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
+        <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name"><span style="color:var(--gold-l)">★</span> Appalachian Distillery</span><span class="directory-item-cat">Distillery</span></div><a href="https://www.appalachian-moonshine.com" class="directory-item-link" target="_blank" rel="noopener">appalachian-moonshine.com ↗</a></div>
         <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">Vail Furniture</span><span class="directory-item-cat">Furniture — Est. 1844</span></div><a href="https://www.google.com/search?q=Vail+Furniture+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
         <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">WV Artisan Market</span><span class="directory-item-cat">Artisan Goods &amp; Crafts</span></div><a href="https://www.google.com/search?q=WV+Artisan+Market+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
         <div class="directory-item"><div class="directory-item-left"><span class="directory-item-name">218 Bridal</span><span class="directory-item-cat">Bridal Boutique</span></div><a href="https://www.google.com/search?q=218+Bridal+Ripley+WV" class="directory-item-link" target="_blank" rel="noopener">Find ↗</a></div>
@@ -1368,7 +1373,7 @@ var POIS=[
   {n:"That Donut Place",c:"dining",lat:38.8151,lng:-81.7096,a:"234 S Church St, Ripley, WV 25271",d:"Donuts — 234 S Church St."},
   {n:"I Scream Sundae",c:"dining",lat:38.818887,lng:-81.717178,a:"516 Main St W, Ripley, WV 25271",d:"Ice cream — 516 Main St W."},
   {n:"Fairplain Yacht Club",c:"dining",lat:38.764375,lng:-81.684301,a:"3869 Cedar Lakes Dr, Ripley, WV 25271",d:"Creative American — 3869 Cedar Lakes Dr."},
-  {n:"Appalachian Distillery",c:"dining",lat:38.763924,lng:-81.684031,a:"3875 Cedar Lakes Dr, Ripley, WV 25271",d:"Craft moonshine, tastings & $5 tours — 3875 Cedar Lakes Dr."},
+  {n:"Appalachian Distillery",c:"dining",f:true,u:"https://www.appalachian-moonshine.com",lat:38.763924,lng:-81.684031,a:"3875 Cedar Lakes Dr, Ripley, WV 25271",d:"Craft moonshine, tastings & $5 tours — 3875 Cedar Lakes Dr."},
   {n:"Osaka Sushi, Thai & Steakhouse",c:"dining",lat:38.768864,lng:-81.695934,a:"2998 Charleston Rd, Ripley, WV 25271",d:"Japanese, Thai & steaks — 2998 Charleston Rd."},
   // Shops — Ripley
   {n:"Vail Furniture",c:"shops",lat:38.818971,lng:-81.710368,a:"103 N Church St, Ripley, WV 25271",d:"Furniture & home — est. 1844. 103 N Church St."},
@@ -1383,9 +1388,9 @@ var POIS=[
   {n:"Riverbend Antiques & Craft Mall",c:"shops",lat:38.9485,lng:-81.7612,a:"219 Washington St, Ravenswood, WV 26164",d:"Antiques & crafts — 219 Washington St."},
   {n:"Ravenswood Floral and Gifts",c:"shops",lat:38.948360,lng:-81.761423,a:"512 Washington St, Ravenswood, WV 26164",d:"Flowers & gifts — 512 Washington St."},
   // Stay
-  {n:"Cedar Lakes — Holt Lodge",c:"stay",lat:38.795438,lng:-81.686000,a:"82 FFA Drive, Ripley, WV 25271",d:"440 beds; conference & event lodging. 82 FFA Drive."},
+  {n:"Cedar Lakes — Holt Lodge",c:"stay",f:true,u:"https://www.cedarlakes.com",lat:38.795438,lng:-81.686000,a:"82 FFA Drive, Ripley, WV 25271",d:"440 beds; conference & event lodging. 82 FFA Drive."},
   {n:"The Ravenswood Inn",c:"stay",lat:38.948555,lng:-81.758685,a:"400 Walnut St, Ravenswood, WV 26164",d:"Victorian B&B, 3 rooms — 400 Walnut St."},
-  {n:"Great Bend Campground & Marina",c:"stay",lat:38.945969,lng:-81.758599,a:"Great Bend Campground, Ravenswood, WV 26164",d:"RV, tents & boat slips on the Ohio River."},
+  {n:"Great Bend Campground & Marina",c:"stay",f:true,u:"https://greatbendcampground.com",lat:38.945969,lng:-81.758599,a:"Great Bend Campground, Ravenswood, WV 26164",d:"RV, tents & boat slips on the Ohio River."},
   {n:"Statts Mills RV Park & Cabins",c:"stay",lat:38.74148,lng:-81.62397,a:"5426 Statts Mills Rd, Ripley, WV 25271",d:"Cabins & RV on 217-acre Lake O'Brien."},
   {n:"Quality Inn",c:"stay",lat:38.825380,lng:-81.727679,a:"Quality Inn, Ripley, WV 25271",d:"From $64/night — Exit 138, I-77."},
   {n:"Super 8",c:"stay",lat:38.819727,lng:-81.725136,a:"Super 8, Ripley, WV 25271",d:"From $70/night — Exit 138, I-77."},
@@ -1419,10 +1424,10 @@ function initMap(){
     var pts=[];
     POIS.forEach(function(p){
       var color=CATS[p.c]||'#C4882A';
-      var m=L.circleMarker([p.lat,p.lng],{radius:6,weight:1.5,color:'#0F1A12',fillColor:color,fillOpacity:.95});
+      var m=L.circleMarker([p.lat,p.lng],p.f?{radius:9,weight:2,color:'#A87020',fillColor:'#D4A44E',fillOpacity:1}:{radius:6,weight:1.5,color:'#0F1A12',fillColor:color,fillOpacity:.95});
       m.bindTooltip(p.n,{direction:'top',offset:[0,-4]});
       var dest=p.a?encodeURIComponent(p.a):p.lat+','+p.lng;
-      m.bindPopup('<strong>'+p.n+'</strong>'+(p.d?'<br><small>'+p.d+'</small>':'')+'<br><a href="https://www.google.com/maps/dir/?api=1&destination='+dest+'" target="_blank" rel="noopener" style="color:#D4A44E;font-weight:600">Directions ↗</a>');
+      m.bindPopup((p.f?'<span style="color:#C4882A;font-weight:700;font-size:.62rem;letter-spacing:.14em">★ FEATURED PARTNER</span><br>':'')+'<strong>'+p.n+'</strong>'+(p.d?'<br><small>'+p.d+'</small>':'')+(p.u?'<br><a href="'+p.u+'" target="_blank" rel="noopener" style="color:#D4A44E;font-weight:600">Visit website ↗</a>':'')+'<br><a href="https://www.google.com/maps/dir/?api=1&destination='+dest+'" target="_blank" rel="noopener" style="color:#D4A44E;font-weight:600">Directions ↗</a>');
       m.addTo(map);
       MAP.layers.push({cat:p.c,layer:m});
       pts.push([p.lat,p.lng]);
