@@ -6,6 +6,8 @@
 !README.md
 !.gitignore
 !CNAME
+!sitemap.xml
+!robots.txt
 !social-card.png
 !jackson_boundaries.geojson
 !jackson_parks.geojson
