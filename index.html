@@ -1544,9 +1544,7 @@ function initMap(){
       function(f){
         var p=f.properties;
         if(p.water==='Yes')return{color:'#2B4B6E',weight:3,opacity:.9};
-        if(p.bike==='Yes')return{color:'#D4A44E',weight:2,opacity:.8};
-        if(p.trailSyste&&p.trailSyste.indexOf('Clegg')>-1)return{color:'#A87020',weight:2,opacity:.8};
-        return{color:'#3a6035',weight:2,opacity:.75};
+        return{color:'#3a6035',weight:2,opacity:.8};
       },
       function(f){
         var p=f.properties,types=[];
